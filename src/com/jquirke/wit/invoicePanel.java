@@ -23,19 +23,25 @@ import javax.swing.JTextField;
 
 
 
-public class invoicePanel extends JPanel {
+public class invoicePanel extends JPanel implements ActionListener{
 	
 	JPanel customers;
 	JPanel top = new JPanel();
 	SqlQueries con = new SqlQueries();	
 	JPanel center = new JPanel();
-	Buttons buttons = new Buttons();
+	
 	Labels label = new Labels();	
 	TextBoxes textBox = new TextBoxes();
 	JTextField custId =new JTextField(10);
 	JButton button = new JButton("Search Customers");
 	ButtonListener btnLis = new ButtonListener();
 	JTextField qty = new JTextField(80);	
+	JTextField number = new JTextField(80);	
+	JButton save = new JButton(" Add ");
+	JTextField Desc = new JTextField();
+	JTextField unit = new JTextField();
+	JTextField total = new JTextField();
+	
 	
 	
 	public void createPanel2()
@@ -61,6 +67,7 @@ public class invoicePanel extends JPanel {
 		
 		addInvoiceDetails();
 		enterItems();
+		
 				
 	}
 	
@@ -79,12 +86,17 @@ public JTextField custId(){
 	
 	public void addInvoiceDetails(){
 		
-		center.add(label.getInvoiceNumber());			
-		center.add(textBox.getInvNumber());
+		center.add(label.getInvoiceNumber());
+		number.setBounds(430, 25, 150, 20 );
+		number.setSize(150,30);	
+		String text = con.getInvoiceNumber();
+		number.setText(text);
+		center.add(number);	
+		
 		center.add(label.clerkName());
 		center.add(textBox.getSalesRep());
 		
-		con.getInvoiceNumber();
+		
 	}
 	
 	
@@ -119,6 +131,8 @@ public void actionPerformed(ActionEvent e) {
 	String text = con.getCustomer(custnumber);
 	textBox.customerDetails().setText(text);
 	
+	
+	
 }
 
 }
@@ -139,10 +153,43 @@ public void enterItems(){
 	qty.setSize(80,30);	
 	center.add(qty);
 	
-	center.add(textBox.setDesc());
-	center.add(textBox.setUnit());
-	center.add(textBox.setTotal());
-	center.add(buttons.addButton());
+	Desc.setBounds(90,270, 150, 20);
+	Desc.setSize(300,30);	
+	center.add(Desc);
+	
+	
+	unit.setBounds(390,270, 150, 20 );
+	unit.setSize(150,30);	
+	center.add(unit);
+	
+	total.setBounds(540,270, 150, 20 );
+	total.setSize(150,30);	
+	center.add(total);
+	
+	save.setBounds( 690, 270, 150, 20 );
+	save.setSize(80,30);
+	save.addActionListener(this);
+	center.add(save);
+}
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	
+	if(e.getSource() == save){
+		
+		String qauntity = qty.getText();
+		int quan = Integer.parseInt(qauntity);
+		String description = Desc.getText();
+		String units = unit.getText();
+		int costpu = Integer.parseInt(units);
+		String totals = total.getText();
+		int totalAmt  = Integer.parseInt(totals);
+		
+	con.insertProduct(quan,description,costpu,totalAmt) ;
+	
+	System.out.println("Entered product");
+				
+	}
 }
 
 

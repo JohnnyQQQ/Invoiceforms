@@ -19,12 +19,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
-public class Panel1 {
+public class customerPanel {
 	
 	JPanel panel1;
 	
     SqlQueries con = new SqlQueries();
-	Buttons buttons = new Buttons();
+	
 	Labels label = new Labels();
 	TextBoxes text = new TextBoxes();
 	JTextArea textArea = new JTextArea();

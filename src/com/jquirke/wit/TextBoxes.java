@@ -12,12 +12,12 @@ public class TextBoxes {
 	SqlQueries con = new SqlQueries();
 	Labels label = new Labels();
 	JTextArea textArea = new JTextArea();
-	JTextField number = new JTextField(80);	
+	
 	JTextField qty = new JTextField(80);	
 	
 	String name;
 
-	JTextField total= new JTextField();	
+	
 	
 	
 	
@@ -29,27 +29,6 @@ public class TextBoxes {
 	}	
 	
 	
-	
-	
-	
-	public String getfirstname(){
-			
-		
-		return "John";
-	   
-	}
-	
-	
-
-	
-	public JTextField getInvNumber(){		
-		
-		number.setBounds(430, 25, 150, 20 );
-		number.setSize(150,30);	
-		
-		return number;
-	}
-	
 	public JComboBox getSalesRep(){	
 		
 		String names[] = {"Select rep","John Quirke","Mary Jones","Paddy Purcell","Joe Blogs"};
@@ -58,29 +37,6 @@ public class TextBoxes {
 		combo.setSize(150,30);	
 		return combo;
 	}
-	// Invoice forms
-	
-	public JTextField setDesc(){		
-		JTextField Desc = new JTextField();	
-		Desc.setBounds(90,270, 150, 20);
-		Desc.setSize(300,30);	
-		
-		return Desc;
-	}
-	
-	public JTextField setUnit(){		
-		JTextField unit= new JTextField();	
-		unit.setBounds(390,270, 150, 20 );
-		unit.setSize(150,30);	
-		
-		return unit;
-	}
-	
-	public JTextField setTotal(){		
-		
-		total.setBounds(540,270, 150, 20 );
-		total.setSize(150,30);	
-		
-		return total;
-	}
+
+
 }// end TextBoxes

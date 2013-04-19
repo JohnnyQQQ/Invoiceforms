@@ -10,10 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class OptionsPanel {
+public class OptionsPanel implements ActionListener{
 	JPanel OptionsPanel = new JPanel();
-	ButtonListener opts = new ButtonListener();
-	SqlQueries con = new SqlQueries();	
+	invoicePanel ip = new invoicePanel();
+	SqlQueries con = new SqlQueries();
+	JButton newInvoice = new JButton("Create New Invoice");
+	
 	
 	public void createOptionsPanel()
 	{
@@ -24,21 +26,22 @@ public class OptionsPanel {
 		systemName.setBounds( 50,10, 500, 40 );
 	    systemName.setFont(new Font("Serif", Font.PLAIN,20));
 	    
-		JButton newInvoice = new JButton("Create New Invoice");
-		newInvoice.setBounds(240, 100, 300, 75);
-		newInvoice.addActionListener(opts);
 		
+		newInvoice.setBounds(240, 100, 300, 75);
+		newInvoice.addActionListener(this);
+		
+				
 		JButton newCustomer = new JButton("Create/Get Customer");
 		newCustomer.setBounds(240, 225, 300, 75);
-		newCustomer.addActionListener(opts);
+		newCustomer.addActionListener(this);
 		
 		JButton editInvoice = new JButton("Edit Invoice Details");
 		editInvoice.setBounds(240, 350, 300, 75);
-		editInvoice.addActionListener(opts);
+		editInvoice.addActionListener(this);
 		
 		JButton editCustomer= new JButton("Edit Customer Details");
 		editCustomer.setBounds(240, 475, 300, 75);
-		editCustomer.addActionListener(opts);
+		editCustomer.addActionListener(this);
 		
 		OptionsPanel.add(systemName);
 		OptionsPanel.add(newInvoice);
@@ -54,15 +57,19 @@ public JPanel OptionsPanel(){
 		
 	}
 
-class ButtonListener implements ActionListener {
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
+public void actionPerformed(ActionEvent e) {
+	
+	if(e.getSource() == newInvoice ){
 		
+		con.getInvoiceNumber();
 		con.increaseInvoiceNumber();
-	}
+		ip.addInvoiceDetails();
+					
+		}
 	
 	
 }
 
-}
+
+
+}// end code

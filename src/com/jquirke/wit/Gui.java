@@ -11,7 +11,7 @@ public class Gui extends JFrame {
 	JTabbedPane tabbedPane;
 	JPanel topPanel = new JPanel();
 	OptionsPanel op = new OptionsPanel();
-	Panel1 p1 = new Panel1();
+	customerPanel  p1 = new customerPanel();
 	invoicePanel  p2 = new invoicePanel();
 	Panel3 p3 = new Panel3();
 	Panel4 p4 = new Panel4();
@@ -47,6 +47,7 @@ public class Gui extends JFrame {
 		tabbedPane.addTab( "Edit Invoice", p4.getPanel4() );
 		
 		topPanel.add( tabbedPane, BorderLayout.CENTER );
+		
 		
 		
 		//tabbedPane.setSelectedIndex(0);

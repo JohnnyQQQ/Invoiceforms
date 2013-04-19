@@ -64,7 +64,15 @@ public class SqlQueries {
 
 	    	
     }
-    
+    /**
+     * Enter the Customer Details into the invoicejava Database
+     * @param fname
+     * @param lname
+     * @param address
+     * @param landline
+     * @param mobile
+     * @param comments
+     */
     public void insertCustomer(String fname, String lname, String address, int landline, int mobile, String comments) 
     						
     {
@@ -113,34 +121,24 @@ public class SqlQueries {
     }
     
     /**
-     * Returns the contents of the databse by 
+     * Returns the contents of the database by 
      * using a while loop
      * @return 
      */
 
     
     public void getCustData(){
-    	
-    	
-
     	try{
-    		
-        	connection();
-        	
+    		connection();        	
 		     statement.executeQuery("SELECT id, fname, lname, address, telephone FROM customers");
 			 ResultSet rs = statement.getResultSet ();
-			 
-			 
-				
-		
 while (rs.next ()){
 							
 				int id = rs.getInt("id");
 				String name = rs.getString("fname");
 				String dept = rs.getString("lname");
 				String  salary = rs.getString ("address");
-				int location = rs.getInt("telephone");
-				
+				int location = rs.getInt("telephone");				
 				System.out.println(id + "\t" + name + "\t" + dept + "\t" + salary + "\t" + location);
 				
 			}//end while
@@ -179,8 +177,7 @@ while (rs.next ()){
     	 ResultSet rs = statement.getResultSet ();
     	 
     	 rs.first();
-    	 
-    	 
+    	   	 
     	  System.out.println("Customer Number :" + rs.getInt("id") + " ");
           System.out.print("User Name :" + rs.getString("fname")); 
           System.out.println(" " + rs.getString("lname")); 
@@ -192,8 +189,7 @@ while (rs.next ()){
         		  +"\n" + "Address :" + rs.getString("address") 
         		  +"\n" + "Telephone :" +rs.getString("telephone")
         		  +"\n" + "Mobile number" + rs.getString("mobile") ;
-          
-          
+                    
     	}catch(Exception e){
     		
     		e.printStackTrace();
@@ -205,22 +201,27 @@ while (rs.next ()){
      * Get the invoice number and place it on the invoice form
      */
     
-    public void getInvoiceNumber(){
+    public String getInvoiceNumber(){
     	
     	try{
     		
     		connection();
     		 statement.executeQuery("SELECT invoice_id FROM invoice ");    		 
         	 ResultSet rs = statement.getResultSet ();    
-        	 rs.first();
-        	 
-        	 System.out.println(rs.getInt("invoice_id"));
+        	 rs.last();
+        	        	 
+        	 String invNo = Integer.toString(rs.getInt("invoice_id"));
+        	 return invNo;
+        	
         	 
     		
     	}catch(Exception e){
     		
     		e.printStackTrace();
     	}
+		return null;
+    	
+    	
     }
     
     /**
@@ -257,7 +258,52 @@ while (rs.next ()){
     	
     }
    
-}
+    /**
+     * Enter products into the database
+     * then to click the add button that will then enter a new
+     * row onto the  screen
+     */
+    public void insertProduct(int qty, String Description, int unit_cost, int total) 
+	
+    {
+    	
+    	try{
+    	int quantity = qty;
+    	String desc = Description;    	
+    	int units = unit_cost;
+    	int totals = total;
+    	connection();
+    	
+       	
+    	String QueryString = "INSERT INTO products (qty,Description, unit_cost, total) " 
+    			+ " VALUES "
+    			+ "(' " + quantity    +	 " '," 
+    			+ "' "  + desc    +  " '," 
+    			+ " ' " + units       +  "',"
+    			+ " ' " + totals +  "')";
+    	
+    	statement.executeUpdate(QueryString);
+    	
+    	System.out.println("1 Product added");
+    	
+    	}
+    	catch (java.lang.NumberFormatException e){
+    		
+    		System.out.println("number format exception " );
+    		 e.printStackTrace();
+    	}
+    	
+    	
+    	catch (Exception e){
+    		
+    		e.printStackTrace();
+    	}
+    	
+    	
+    	
+    }
+    
+}// end code
     
 	       
 
