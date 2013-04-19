@@ -13,9 +13,9 @@ public class Gui extends JFrame {
 	OptionsPanel op = new OptionsPanel();
 	customerPanel  p1 = new customerPanel();
 	invoicePanel  p2 = new invoicePanel();
-	Panel3 p3 = new Panel3();
+	CustomerAccountPanel p3 = new CustomerAccountPanel();
 	Panel4 p4 = new Panel4();
-	int number = 2;
+	int number = 3;
 
 
 	public Gui(){
@@ -43,7 +43,7 @@ public class Gui extends JFrame {
 		tabbedPane.addTab( "Options", op.OptionsPanel());	
 		tabbedPane.addTab( "Customer Details", p1.getPanel1());
 		tabbedPane.addTab( "Invoice Details", p2.getPanel2() );
-		tabbedPane.addTab( "Checkout", p3.getPanel3() );
+		tabbedPane.addTab( "Customer Account", p3.getPanel3() );
 		tabbedPane.addTab( "Edit Invoice", p4.getPanel4() );
 		
 		topPanel.add( tabbedPane, BorderLayout.CENTER );
