@@ -46,6 +46,11 @@ public class customerPanel {
 	
 	public void createPanel1()
 	{
+		JLabel customerTitle = new JLabel("Please enter Customer Details: ");
+		customerTitle.setForeground(Color.red);
+		customerTitle.setBounds( 50,10, 500, 40 );
+		customerTitle.setFont(new Font("Serif", Font.PLAIN,20));
+	    
 		panel1 = new JPanel();
 		panel1.setLayout( null );
 		panel1.setPreferredSize(new Dimension(775, 730));
@@ -77,6 +82,7 @@ public class customerPanel {
 		addrField4.setSize(200,30);
 		addrField4.getText();
 		
+		panel1.add(customerTitle);
 		panel1.add(addrField);	
 		panel1.add(addrField2);		
 		panel1.add(addrField3);		

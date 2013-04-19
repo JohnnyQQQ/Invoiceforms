@@ -1,10 +1,13 @@
 package com.jquirke.wit;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Insets;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
 public class Gui extends JFrame {
 	
@@ -13,7 +16,7 @@ public class Gui extends JFrame {
 	OptionsPanel op = new OptionsPanel();
 	customerPanel  p1 = new customerPanel();
 	invoicePanel  p2 = new invoicePanel();
-	CustomerAccountPanel p3 = new CustomerAccountPanel();
+	
 	Panel4 p4 = new Panel4();
 	int number = 3;
 
@@ -28,24 +31,25 @@ public class Gui extends JFrame {
 
 		
 		topPanel.setLayout( new BorderLayout() );
-		getContentPane().add( topPanel );
+		getContentPane().add(topPanel);
 
 		// Create the tab pages
-		
 		op.createOptionsPanel();
 		p1.createPanel1();
 		p2.createPanel2();
-		p3.createPanel3();
 		p4.createPanel4();
 
 		// Create a tabbed pane
+		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.WRAP_TAB_LAYOUT);
+		tabbedPane.setUI(new BasicTabbedPaneUI());
+		
 		tabbedPane.addTab( "Options", op.OptionsPanel());	
-		tabbedPane.addTab( "Customer Details", p1.getPanel1());
+		tabbedPane.addTab( "Enter Customer Details", p1.getPanel1());
 		tabbedPane.addTab( "Invoice Details", p2.getPanel2() );
-		tabbedPane.addTab( "Customer Account", p3.getPanel3() );
 		tabbedPane.addTab( "Edit Invoice", p4.getPanel4() );
 		
+		topPanel.setBorder(BorderFactory.createEmptyBorder(20, 5, 5, 5));
 		topPanel.add( tabbedPane, BorderLayout.CENTER );
 		
 		

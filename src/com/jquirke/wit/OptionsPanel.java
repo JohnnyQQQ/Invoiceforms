@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,6 +35,7 @@ public class OptionsPanel implements ActionListener{
 		JButton newCustomer = new JButton("Create/Get Customer");
 		newCustomer.setBounds(240, 225, 300, 75);
 		newCustomer.addActionListener(this);
+		
 		
 		JButton editInvoice = new JButton("Edit Invoice Details");
 		editInvoice.setBounds(240, 350, 300, 75);

@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,7 +56,14 @@ public class invoicePanel extends JPanel implements ActionListener{
 		
 		top.add(label.findCust());
 		top.add(custId());			
-		top.add(searchButton());		
+		top.add(searchButton());
+		
+		JLabel invoiceTitle = new JLabel("Enter Invoice Details Here: ");
+		invoiceTitle.setForeground(Color.red);
+		invoiceTitle.setBounds( 50,10, 500, 40 );
+		invoiceTitle.setFont(new Font("Serif", Font.PLAIN,20));
+		top.add(invoiceTitle);
+		
 		// Centre panel to be customer details
 		center.setLayout(null);
 		center.setPreferredSize(new Dimension(775, 730));	
