@@ -192,7 +192,7 @@ public void actionPerformed(ActionEvent e) {
 		String custNum = custId().getText();	
 		int custnumber =Integer.parseInt(custNum);
 		String text = con.getCustomer(custnumber);
-		
+		textArea.setText(text);
 	}
 }
 
