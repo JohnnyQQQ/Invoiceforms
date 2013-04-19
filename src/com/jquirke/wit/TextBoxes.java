@@ -11,22 +11,11 @@ public class TextBoxes {
 	
 	SqlQueries con = new SqlQueries();
 	Labels label = new Labels();
-	JTextArea textArea = new JTextArea();
 	
-	JTextField qty = new JTextField(80);	
 	
-	String name;
+	JTextField qty = new JTextField(80);
+	
 
-	
-	
-	
-	
-	
-	public  JTextArea customerDetails(){		
-		textArea.setBounds( 20, 25, 200,175);
-		textArea.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 2, 16)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
-		return textArea;		
-	}	
 	
 	
 	public JComboBox getSalesRep(){	

@@ -302,7 +302,45 @@ while (rs.next ()){
     	
     	
     }
-    
+    /**
+     * Returns a row of the database which has the customers
+     * telephone number
+     * @param number
+     * @return
+     */
+        
+        public String setCustomer(){
+        	
+        	
+        	
+        	try{
+        	 connection();
+        	 statement.executeQuery("SELECT id, fname, lname, address, telephone, mobile FROM customers ");
+        	 ResultSet rs = statement.getResultSet ();
+        	 
+        	 rs.last();
+        	   	 
+        /*	  System.out.println("Customer Number :" + rs.getInt("id") + " ");
+              System.out.print("User Name :" + rs.getString("fname")); 
+              System.out.println(" " + rs.getString("lname")); 
+              System.out.println("Address:" + rs.getString("address")); 
+              System.out.println("Telephone" + rs.getString("telephone")); 
+              System.out.println("Mobile:  " + rs.getString("mobile")); */
+              
+              String lastCustomer = "Customer: " + rs.getString("fname") + rs.getString("lname")
+            		  +"\n" + "Address :" + rs.getString("address") 
+            		  +"\n" + "Telephone :" +rs.getString("telephone")
+            		  +"\n" + "Mobile number" + rs.getString("mobile") ;
+                        
+             return lastCustomer;
+             
+        	}catch(Exception e){
+        		
+        		e.printStackTrace();
+        	}
+    		return null;
+        }
+        
 }// end code
     
 	       

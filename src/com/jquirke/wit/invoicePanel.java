@@ -35,13 +35,14 @@ public class invoicePanel extends JPanel implements ActionListener{
 	TextBoxes textBox = new TextBoxes();
 	JTextField custId =new JTextField(10);
 	JButton button = new JButton("Search Customers");
-	ButtonListener btnLis = new ButtonListener();
+	TextBoxes textbox = new TextBoxes();
 	JTextField qty = new JTextField(80);	
 	JTextField number = new JTextField(80);	
 	JButton save = new JButton(" Add ");
 	JTextField Desc = new JTextField();
 	JTextField unit = new JTextField();
 	JTextField total = new JTextField();
+	JTextArea textArea = new JTextArea();
 	
 	
 	
@@ -67,7 +68,11 @@ public class invoicePanel extends JPanel implements ActionListener{
 		// Centre panel to be customer details
 		center.setLayout(null);
 		center.setPreferredSize(new Dimension(775, 730));	
-		center.add(textBox.customerDetails());	
+		textArea.setBounds( 20, 25, 200,175);
+		textArea.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 2, 16)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+		String cust = con.setCustomer();
+		textArea.setText(cust);
+		center.add(textArea);	
 		
 		// Add to top panel
 		customers.add(top, BorderLayout.NORTH);
@@ -97,9 +102,11 @@ public JTextField custId(){
 		center.add(label.getInvoiceNumber());
 		number.setBounds(430, 25, 150, 20 );
 		number.setSize(150,30);	
+		
 		String text = con.getInvoiceNumber();
 		number.setText(text);
 		center.add(number);	
+		
 		
 		center.add(label.clerkName());
 		center.add(textBox.getSalesRep());
@@ -120,30 +127,12 @@ public JPanel getPanel2(){
 public JButton searchButton(){		
 	
 	button.setBounds(600, 20, 150, 25 );
-	button.addActionListener(btnLis);
+	button.addActionListener(this);
 	return button;
 }
 
-/**
- *Add the Actionlistener to get the database
- *customer details and print onto the invoice panel
- *text area
- */
-class ButtonListener implements ActionListener{
 
-public void actionPerformed(ActionEvent e) {
-	
-	String custNum = custId().getText();	
-	int custnumber =Integer.parseInt(custNum);
-	System.out.println(custNum);
-	String text = con.getCustomer(custnumber);
-	textBox.customerDetails().setText(text);
-	
-	
-	
-}
 
-}
 /**
  * Create the entering details part of the invoice
  * The sales clerk will enter invoice data and on 
@@ -164,8 +153,7 @@ public void enterItems(){
 	Desc.setBounds(90,270, 150, 20);
 	Desc.setSize(300,30);	
 	center.add(Desc);
-	
-	
+		
 	unit.setBounds(390,270, 150, 20 );
 	unit.setSize(150,30);	
 	center.add(unit);
@@ -197,6 +185,14 @@ public void actionPerformed(ActionEvent e) {
 	
 	System.out.println("Entered product");
 				
+	}
+	
+	if(e.getSource() == button){
+		
+		String custNum = custId().getText();	
+		int custnumber =Integer.parseInt(custNum);
+		String text = con.getCustomer(custnumber);
+		
 	}
 }
 
