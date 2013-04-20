@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
 
 
 
@@ -44,14 +46,15 @@ public class InvoicePanel extends JPanel implements ActionListener{
 	JTextField total = new JTextField();
 	JTextArea textArea = new JTextArea();
 	
-	
+
 	
 	public void createPanel2()
 	{
 		// North Panel
 		customers = new JPanel();
 		customers.setLayout(new BorderLayout());
-		customers.setPreferredSize(new Dimension(775, 730));		
+		customers.setPreferredSize(new Dimension(775, 730));
+		
 		top.setLayout(null);
 		top.setPreferredSize(new Dimension(775, 75));
 		
