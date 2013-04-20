@@ -15,7 +15,7 @@ public class Gui extends JFrame {
 	JPanel topPanel = new JPanel();
 	OptionsPanel op = new OptionsPanel();
 	customerPanel  p1 = new customerPanel();
-	invoicePanel  p2 = new invoicePanel();
+	InvoicePanel  p2 = new InvoicePanel();
 	
 	EditInvoices p4 = new EditInvoices();
 	int number = 3;

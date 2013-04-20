@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class OptionsPanel implements ActionListener{
 	JPanel OptionsPanel = new JPanel();
-	invoicePanel ip = new invoicePanel();
+	InvoicePanel ip = new InvoicePanel();
 	SqlQueries con = new SqlQueries();
 	JButton newInvoice = new JButton("Create New Invoice");
 	

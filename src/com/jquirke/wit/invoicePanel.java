@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 
 
 
-public class invoicePanel extends JPanel implements ActionListener{
+public class InvoicePanel extends JPanel implements ActionListener{
 	
 	JPanel customers;
 	JPanel top = new JPanel();
