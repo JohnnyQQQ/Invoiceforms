@@ -320,7 +320,8 @@ while (rs.next ()){
         	 
         	 rs.last();
         	   	 
-        /*	  System.out.println("Customer Number :" + rs.getInt("id") + " ");
+        /*	// Test Coutput 
+         *  System.out.println("Customer Number :" + rs.getInt("id") + " ");
               System.out.print("User Name :" + rs.getString("fname")); 
               System.out.println(" " + rs.getString("lname")); 
               System.out.println("Address:" + rs.getString("address")); 

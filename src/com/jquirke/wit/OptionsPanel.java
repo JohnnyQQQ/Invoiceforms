@@ -35,7 +35,7 @@ public class OptionsPanel implements ActionListener{
 		JButton newCustomer = new JButton("Create/Get Customer");
 		newCustomer.setBounds(240, 225, 300, 75);
 		newCustomer.addActionListener(this);
-		;
+		
 		
 		JButton editInvoice = new JButton("Edit Invoice Details");
 		editInvoice.setBounds(240, 350, 300, 75);

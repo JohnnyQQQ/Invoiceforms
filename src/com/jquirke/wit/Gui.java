@@ -17,7 +17,7 @@ public class Gui extends JFrame {
 	customerPanel  p1 = new customerPanel();
 	invoicePanel  p2 = new invoicePanel();
 	
-	Panel4 p4 = new Panel4();
+	EditInvoices p4 = new EditInvoices();
 	int number = 3;
 
 
@@ -37,7 +37,7 @@ public class Gui extends JFrame {
 		op.createOptionsPanel();
 		p1.createPanel1();
 		p2.createPanel2();
-		p4.createPanel4();
+		p4.editInvoicePanel();
 
 		// Create a tabbed pane
 		
