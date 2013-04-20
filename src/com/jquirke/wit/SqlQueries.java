@@ -322,7 +322,7 @@ while (rs.next ()){
         	 
         	 rs.last();
         	   	 
-        /*	// Test Coutput 
+        /*	// Test output 
          *  System.out.println("Customer Number :" + rs.getInt("id") + " ");
               System.out.print("User Name :" + rs.getString("fname")); 
               System.out.println(" " + rs.getString("lname")); 
@@ -354,7 +354,7 @@ while (rs.next ()){
  * @param mobile
  */
 
-   public void UpdateCustomer(String fname, String lname, String address, int landline, int mobile){
+   public void UpdateCustomer(String fname, String lname, String address, int landline, int mobile, int rowNumber){
 	   
 	   try{
 	    	String firstname = fname;
@@ -362,6 +362,7 @@ while (rs.next ()){
 	    	String addr = address;
 	    	int telephone = landline;
 	    	int mobphone = mobile;
+	    	int row = rowNumber;
 	    
 	    	  	
 	    	   
@@ -373,7 +374,7 @@ while (rs.next ()){
    			+ "', address= '" + addr
    			+ "', telephone=' " + telephone
    			+ "', mobile= '" + mobphone
-   			+ "' WHERE id = " + 15 ;
+   			+ "' WHERE id = " + row ;
    	
    	System.out.println(QueryString);
    			
@@ -394,14 +395,10 @@ while (rs.next ()){
    		
    		e.printStackTrace();
    	}
-   	
-	   
-	   
-	   
 	   
    }
         
-}// end code
+}// end SQL Queries code
     
 	       
 

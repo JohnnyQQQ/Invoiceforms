@@ -15,7 +15,7 @@ public class EditInvoices implements ActionListener{
 
 	JPanel editInvoices = new JPanel();
 	SqlQueries con = new SqlQueries();
-	JButton editCustNumber = new JButton("Edit!");
+	JButton editCustNumber = new JButton("Lookup!");
 	JTextArea custDetails = new JTextArea();
 	JTextField editBox = new JTextField(40);
 	Labels label = new Labels();
@@ -166,6 +166,9 @@ public void actionPerformed(ActionEvent e) {
 	
 if(e.getSource() == edit ){
 	
+	String custNum = editBox.getText();	
+	int rowNumber =Integer.parseInt(custNum);
+	
 	String fname = firstname.getText();
 	String lname = lfield.getText();
 	String address = addrField.getText() + " " + addrField2.getText() + " " + addrField3.getText() +" " + addrField4.getText();
@@ -173,7 +176,7 @@ if(e.getSource() == edit ){
 	int landline  = Integer.parseInt(telephone);
 	String mobphone =  mobTelfield.getText();
 	int mobile  = Integer.parseInt(mobphone);
-	con.UpdateCustomer(fname, lname, address, landline, mobile);
+	con.UpdateCustomer(fname, lname, address, landline, mobile, rowNumber);
 	System.out.print("Edit Button Pressed");
 		
 	}
