@@ -302,6 +302,8 @@ while (rs.next ()){
     	
     	
     }
+    
+    
     /**
      * Returns a row of the database which has the customers
      * telephone number
@@ -340,7 +342,64 @@ while (rs.next ()){
         		e.printStackTrace();
         	}
     		return null;
-        }
+    }
+
+
+/**
+ * Update customer details in the database
+ * @param fname
+ * @param lname
+ * @param address
+ * @param landline
+ * @param mobile
+ */
+
+   public void UpdateCustomer(String fname, String lname, String address, int landline, int mobile){
+	   
+	   try{
+	    	String firstname = fname;
+	    	String lastname = lname;
+	    	String addr = address;
+	    	int telephone = landline;
+	    	int mobphone = mobile;
+	    
+	    	  	
+	    	   
+	connection();
+		  
+   	String QueryString = "UPDATE customers SET "
+   			+ " fname= '"+ firstname 
+   			+ "', lname=' " + lastname 
+   			+ "', address= '" + addr
+   			+ "', telephone=' " + telephone
+   			+ "', mobile= '" + mobphone
+   			+ "' WHERE id = " + 15 ;
+   	
+   	System.out.println(QueryString);
+   			
+   	
+   	statement.executeUpdate(QueryString);
+   	
+   	System.out.println("1 record updated");
+   	
+   	}
+   	catch (java.lang.NumberFormatException e){
+   		
+   		System.out.println("number format exception " );
+   		 e.printStackTrace();
+   	}
+   	
+   	
+   	catch (Exception e){
+   		
+   		e.printStackTrace();
+   	}
+   	
+	   
+	   
+	   
+	   
+   }
         
 }// end code
     

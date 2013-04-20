@@ -165,7 +165,15 @@ public void actionPerformed(ActionEvent e) {
 	}
 	
 if(e.getSource() == edit ){
-
+	
+	String fname = firstname.getText();
+	String lname = lfield.getText();
+	String address = addrField.getText() + " " + addrField2.getText() + " " + addrField3.getText() +" " + addrField4.getText();
+	String telephone = telfield.getText();
+	int landline  = Integer.parseInt(telephone);
+	String mobphone =  mobTelfield.getText();
+	int mobile  = Integer.parseInt(mobphone);
+	con.UpdateCustomer(fname, lname, address, landline, mobile);
 	System.out.print("Edit Button Pressed");
 		
 	}
