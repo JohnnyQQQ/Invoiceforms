@@ -20,12 +20,10 @@ public class SqlQueries {
     
     Statement statement = null;
     int updateQuery = 0;
-    private FlowLayout layout; // layout object
-    private JTextField txtName;
-    String[] columnNames = {"fname","lname","address"};
-    Object[][] data;   
+
+   
     Connection conn = null;
-    JScrollPane scrollPane;
+   
    
 
 
@@ -102,6 +100,7 @@ public class SqlQueries {
     	statement.executeUpdate(QueryString);
     	
     	System.out.println("1 record added");
+    	statement.close();
     	
     	}
     	catch (java.lang.NumberFormatException e){
@@ -189,6 +188,8 @@ while (rs.next ()){
         		  +"\n" + "Address :" + rs.getString("address") 
         		  +"\n" + "Telephone :" +rs.getString("telephone")
         		  +"\n" + "Mobile number" + rs.getString("mobile") ;
+          
+        
                     
     	}catch(Exception e){
     		
@@ -398,6 +399,7 @@ while (rs.next ()){
 	   
    }
         
+ 
 }// end SQL Queries code
     
 	       

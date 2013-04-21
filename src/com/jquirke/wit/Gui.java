@@ -18,7 +18,7 @@ public class Gui extends JFrame {
 	InvoicePanel  p2 = new InvoicePanel();
 	
 	EditInvoices p4 = new EditInvoices();
-	int number = 0;
+	int number = 1;
 
 
 	public Gui(){

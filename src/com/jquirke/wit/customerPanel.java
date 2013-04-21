@@ -3,9 +3,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GraphicsConfiguration;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
+import java.sql.ResultSet;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -15,6 +18,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -36,7 +41,7 @@ public class customerPanel {
 	JTextField addrField4 = new JTextField(20);
 	JTextField telfield = new JTextField(20);
 	JTextField mobTelfield = new JTextField();
-	JTextArea commentsfield = new JTextArea("Enter other relevent details", 700,200);
+	JTextArea commentsfield = new JTextArea(700,200);
 	ButtonListener btnL = new ButtonListener();
 	JButton save = new JButton("Save Customer Details");
 
@@ -103,9 +108,8 @@ public class customerPanel {
 		
 		// Comments Box		
 		panel1.add(label.getComment());		
-		commentsfield.setBounds( 40, 380, 150, 20 );
-		commentsfield.setSize(700,200);
-		commentsfield.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(null, "Other Notes :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 11)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+		commentsfield.setBounds( 20, 340, 150, 20 );
+		commentsfield.setSize(400,50);
 		panel1.add(commentsfield);
 	    
 		
@@ -113,6 +117,8 @@ public class customerPanel {
 		save.setSize(200,50);
 		save.addActionListener(btnL);
 		panel1.add(save);
+		
+		makeJTable();
 		
 	}
 	
@@ -154,8 +160,29 @@ public class customerPanel {
 }
 	
 	
-	
-	
 	  }
-}
+	
+	public void makeJTable(){
+		try{
+		con.connection();
+		
+        //ResultSet resultSet = statement.executeQuery("SELECT authorID, firstName, lastName FROM authors");
+		JTablesInfo tablePanel = new JTablesInfo();
+		
+			    panel1.add(tablePanel.getTableCustomers());
+			    
+		}catch(Exception e){
+			
+			e.printStackTrace();
+		}
+		
+			  }
+
+
+	
+
+		   
+	
+	
+}// end code
 

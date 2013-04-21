@@ -51,7 +51,7 @@ public class Labels {
 	
 	public JLabel getComment(){		
 		JLabel comments = new JLabel( "Comments: " );
-		comments.setBounds( 10, 350, 150, 20 );	
+		comments.setBounds( 10, 320, 150, 20 );	
 		comments.setFont(new Font("Verdana", Font.PLAIN,14));
 		return comments;
 	}
