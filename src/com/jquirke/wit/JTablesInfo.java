@@ -4,7 +4,9 @@ import java.sql.DriverManager;import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;import java.sql.SQLException;
 import javax.swing.JFrame;import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JScrollPane;import java.awt.FlowLayout;
+import javax.swing.JScrollPane;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Dimension; import javax.swing.JTextField;
 
 
@@ -32,11 +34,11 @@ public class JTablesInfo extends JFrame{
 	// constructor
 	public JTablesInfo()
 	{
-		super("Authors Table of Books Database:");
-		setLayout( new FlowLayout() );
+		
+	
 		getData();
-		txtName = new JTextField("Enter Search Criteria Here");
-		add(txtName);
+		
+		
 	}
 
 
@@ -78,10 +80,7 @@ public class JTablesInfo extends JFrame{
 		try 
 		{
 
-			System.out.println("About to process statements...");
-			// query database
 			ResultSet resultSet = statement.executeQuery("SELECT id, fname, lname , address, telephone FROM customers");
-			// process query results
 			ResultSetMetaData metaData = resultSet.getMetaData();
 			int numberOfColumns = metaData.getColumnCount(); 
 			data = new Object[100][numberOfColumns];
@@ -97,9 +96,6 @@ public class JTablesInfo extends JFrame{
 					
 				}
 				k=0; j++;
-				
-				
-				
 			} // end while
 
 			
@@ -111,10 +107,6 @@ public class JTablesInfo extends JFrame{
 			
 			p.setSize(500, 300);
 			p.add(scrollPane);
-		//	frame.setVisible(true);
-		//	frame.setSize(800, 400);			
-	//		frame.add(p);
-		//	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 			
 		}  // end try
@@ -136,9 +128,13 @@ public class JTablesInfo extends JFrame{
 			} // end catch                                             
 		} // end finally                  
 	}//end getData
+	
+	
  public JPanel getTableCustomers(){
 	 
-	 
+	// p.setLayout(new BorderLayout());
+	// p.add(BorderLayout.CENTER, getData());
+	 p.setPreferredSize(new Dimension(500, 500));
 	 p.setBounds(50, 400, 600, 300);
 	 return p;
  }

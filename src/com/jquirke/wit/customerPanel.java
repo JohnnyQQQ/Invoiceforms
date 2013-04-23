@@ -118,6 +118,8 @@ public class customerPanel {
 		save.addActionListener(btnL);
 		panel1.add(save);
 		
+		panel1.add(label.getRecentCust());
+		
 		makeJTable();
 		
 	}
@@ -152,10 +154,6 @@ public class customerPanel {
 		
 		con.insertCustomer(fname, lname, address, landline, mobile, comments);
 		
-	    
-		Gui gu = new Gui();
-		gu.swithIndex(3);
-		
 		
 }
 	
@@ -166,7 +164,7 @@ public class customerPanel {
 		try{
 		con.connection();
 		
-        //ResultSet resultSet = statement.executeQuery("SELECT authorID, firstName, lastName FROM authors");
+        
 		JTablesInfo tablePanel = new JTablesInfo();
 		
 			    panel1.add(tablePanel.getTableCustomers());

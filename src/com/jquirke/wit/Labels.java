@@ -56,6 +56,14 @@ public class Labels {
 		return comments;
 	}
 	
+	public JLabel getRecentCust(){		
+		JLabel comments = new JLabel( "Recent Customers " );
+		comments.setBounds( 10, 400, 150, 20 );	
+		comments.setFont(new Font("Verdana", Font.PLAIN,14));
+		return comments;
+	}
+	
+	
 	public JLabel getInvoiceNumber(){		
 		JLabel invoiceNumber = new JLabel("Invoice Number :");
 		invoiceNumber.setBounds( 300, 25, 150, 20 );
