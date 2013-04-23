@@ -24,23 +24,16 @@ public class JTablesInfo extends JFrame{
 
 
 	Connection conn = null;
-	// JDBC driver name and database URL                              
-
-
-	private FlowLayout layout; // layout object
-	private JTextField txtName;
+	// JDBC driver name and database URL  
 	String[] columnNames = {"CustomerNumber","First Name","LastName", "Address", "Telephone"};
 	Object[][] data;   
+
+
 	// constructor
 	public JTablesInfo()
 	{
-		
-	
 		getData();
-		
-		
 	}
-
 
 	
 	public void connection(){
@@ -51,27 +44,21 @@ public class JTablesInfo extends JFrame{
 			Class.forName ("com.mysql.jdbc.Driver").newInstance ();
 			conn = DriverManager.getConnection (url, userName, password);
 			statement = conn.createStatement();
-
-			System.out.println("Conected to database ");
-
 			java.sql.DatabaseMetaData dbMetaData = conn.getMetaData();
 			String productName = dbMetaData.getDatabaseProductName();
-			//     System.out.println("Database: " + productName);
 			String productVersion = dbMetaData.getDatabaseProductVersion();
-			//    System.out.println("Version: " + productVersion);
-
-
 		}//end outer try
 		catch (Exception e){
 			System.err.println ("Cannot connect to database server");
 			e.printStackTrace();
 		}//end outer catch
-
-
-
 	}
 
-
+	/**
+	 * Get the data from the database and return
+	 * it in a JTable form and then add to 
+	 * the panel
+	 */
 
 	public void getData(){
 
@@ -84,31 +71,33 @@ public class JTablesInfo extends JFrame{
 			ResultSetMetaData metaData = resultSet.getMetaData();
 			int numberOfColumns = metaData.getColumnCount(); 
 			data = new Object[100][numberOfColumns];
-			System.out.println("Processing statements...");
+
 			int j=0,k=0;
-			
+
 			while ( resultSet.next() ) 
 			{
 				for ( int i = 1;i <=numberOfColumns; i++)
 				{
 					data[j][k] = resultSet.getObject( i );
 					k++;
-					
+
 				}
 				k=0; j++;
 			} // end while
 
-			
+
 			JTable table = new JTable(data, columnNames );
 			table.setPreferredScrollableViewportSize(new Dimension(500, 70));
 			JScrollPane scrollPane = new JScrollPane(table);
 			add(scrollPane); 
-			
-			
-			p.setSize(500, 300);
+
+			p.setLayout(new BorderLayout());
+			p.setBounds(20, 430, 650, 300);
+			p.setSize(730, 200);
+
 			p.add(scrollPane);
-			
-			
+
+
 		}  // end try
 		catch ( SQLException sqlException ) 
 		{
@@ -125,18 +114,17 @@ public class JTablesInfo extends JFrame{
 			catch ( Exception exception ) {                                                          
 				exception.printStackTrace();                                     
 				System.exit( 1 );                                       
-			} // end catch                                             
-		} // end finally                  
-	}//end getData
-	
-	
- public JPanel getTableCustomers(){
-	 
-	// p.setLayout(new BorderLayout());
-	// p.add(BorderLayout.CENTER, getData());
-	 p.setPreferredSize(new Dimension(500, 500));
-	 p.setBounds(50, 400, 600, 300);
-	 return p;
- }
+			}                                           
+		}                   
+	}
+
+/**
+ * Retun the panel that will be added to  customers panel
+ * 
+ */
+	public JPanel getTableCustomers(){
+
+		return p;
+	}
 
 }// end class AuthorsJTable
