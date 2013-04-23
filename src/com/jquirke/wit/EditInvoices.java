@@ -13,21 +13,21 @@ import javax.swing.JTextField;
 
 public class EditInvoices implements ActionListener{
 
-	JPanel editInvoices = new JPanel();
-	SqlQueries con = new SqlQueries();
-	JButton editCustNumber = new JButton("Lookup!");
-	JTextArea custDetails = new JTextArea();
-	JTextField editBox = new JTextField(40);
-	Labels label = new Labels();
-	JTextField firstname = new JTextField(80);
-	JTextField lfield = new JTextField();
-	JTextField addrField = new JTextField(20);
-	JTextField addrField2 = new JTextField(20);
-	JTextField addrField3 = new JTextField(20);
-	JTextField addrField4 = new JTextField(20);
-	JTextField telfield = new JTextField(20);
-	JTextField mobTelfield = new JTextField();
-	JButton edit = new JButton("Edit Customer Details");
+	private JPanel editInvoices = new JPanel();
+	private SqlQueries con = new SqlQueries();
+	private JButton editCustNumber = new JButton("Lookup!");
+	private JTextArea custDetails = new JTextArea();
+	private JTextField editBox = new JTextField(40);
+	private Labels label = new Labels();
+	private JTextField firstname = new JTextField(80);
+	private JTextField lfield = new JTextField();
+	private JTextField addrField = new JTextField(20);
+	private JTextField addrField2 = new JTextField(20);
+	private JTextField addrField3 = new JTextField(20);
+	private JTextField addrField4 = new JTextField(20);
+	private JTextField telfield = new JTextField(20);
+	private JTextField mobTelfield = new JTextField();
+	private JButton edit = new JButton("Edit Customer Details");
 	
 	public void editInvoicePanel(){
 		

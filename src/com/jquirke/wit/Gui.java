@@ -23,27 +23,27 @@ public class Gui extends JFrame implements ActionListener{
 	JPanel topPanel = new JPanel();
 	
 	
-	customerPanel  p1 = new customerPanel();
-	InvoicePanel  p2 = new InvoicePanel();
-	EditInvoices p4 = new EditInvoices();
-	ReportsPage p5 = new ReportsPage();
-	JPanel OptionsPanel = new JPanel();
-	InvoicePanel ip = new InvoicePanel();
-	SqlQueries con = new SqlQueries();
-	JLabel systemName = new JLabel("Invoice System Version 1.0 - Click Options Below");
-	JButton newInvoice = new JButton("Create New Invoice");
-	JButton newCustomer = new JButton("Create/Get Customer");
-	JButton editInvoice = new JButton("Edit Invoice Details");
-	JButton editCustomer= new JButton("Edit Customer Details");
-	JButton invReports = new JButton("Invoice Reports");
+	private customerPanel  p1 = new customerPanel();
+	private InvoicePanel  p2 = new InvoicePanel();
+	private EditInvoices p4 = new EditInvoices();
+	private ReportsPage p5 = new ReportsPage();
+	private JPanel OptionsPanel = new JPanel();
+	private InvoicePanel ip = new InvoicePanel();
+	private SqlQueries con = new SqlQueries();
+	private JLabel systemName = new JLabel("Invoice System Version 1.0 - Click Options Below");
+	private JButton newInvoice = new JButton("Create New Invoice");
+	private JButton newCustomer = new JButton("Create/Get Customer");
+	private JButton editInvoice = new JButton("Edit Invoice Details");
+	private JButton editCustomer= new JButton("Edit Customer Details");
+	private JButton invReports = new JButton("Invoice Reports");
 	// Borders around the buttons
 	
-	Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-	Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-	Border raisedBorder = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-	Border redline = BorderFactory.createLineBorder(Color.red);
+	private Border raisedbevel = BorderFactory.createRaisedBevelBorder();
+	private Border loweredbevel = BorderFactory.createLoweredBevelBorder();
+	private Border raisedBorder = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
+	private Border redline = BorderFactory.createLineBorder(Color.red);
 	
-	Border compound = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel );  
+	private Border compound = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel );  
 	
 	
 

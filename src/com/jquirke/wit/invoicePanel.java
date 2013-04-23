@@ -29,22 +29,22 @@ import javax.swing.border.EtchedBorder;
 
 public class InvoicePanel extends JPanel implements ActionListener{
 	
-	JPanel customers;
-	JPanel top = new JPanel();
-	SqlQueries con = new SqlQueries();	
-	JPanel center = new JPanel();
-	JPanel bottom = new JPanel();
-	Labels label = new Labels();	
-	JTextField custId =new JTextField(10);
-	JButton searchCust = new JButton("Search Customers");
-	JTextField qty = new JTextField(80);	
-	JTextField number = new JTextField(80);	
-	JButton addRow = new JButton(" Add ");
-	JTextField Desc = new JTextField();
-	JTextField unit = new JTextField();
-	JTextField total = new JTextField();
-	JTextArea textArea = new JTextArea();
-	JButton newInv = new JButton("CREATE A NEW INVOICE!");
+	private JPanel customers;
+	private JPanel top = new JPanel();
+	private SqlQueries con = new SqlQueries();	
+	private JPanel center = new JPanel();
+	private JPanel bottom = new JPanel();
+	private Labels label = new Labels();	
+	private JTextField custId =new JTextField(10);
+	private JButton searchCust = new JButton("Search Customers");
+	private JTextField qty = new JTextField(80);	
+	private JTextField number = new JTextField(80);	
+	private JButton addRow = new JButton(" Add ");
+	private JTextField Desc = new JTextField();
+	private JTextField unit = new JTextField();
+	private JTextField total = new JTextField();
+	private JTextArea textArea = new JTextArea();
+	private JButton newInv = new JButton("CREATE A NEW INVOICE!");
 
 	
 	public void createPanel2()

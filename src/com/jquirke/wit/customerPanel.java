@@ -31,23 +31,20 @@ public class customerPanel {
 	
     SqlQueries con = new SqlQueries();
 	
-	Labels label = new Labels();
-	JTextArea textArea = new JTextArea();
-	JTextField firstname = new JTextField(80);
-	JTextField lfield = new JTextField();
-	JTextField addrField = new JTextField(20);
-	JTextField addrField2 = new JTextField(20);
-	JTextField addrField3 = new JTextField(20);
-	JTextField addrField4 = new JTextField(20);
-	JTextField telfield = new JTextField(20);
-	JTextField mobTelfield = new JTextField();
-	JTextArea commentsfield = new JTextArea(700,200);
-	ButtonListener btnL = new ButtonListener();
-	JButton save = new JButton("Save Customer Details");
-
-
-	
-	String input;
+    private Labels label = new Labels();
+    private JTextArea textArea = new JTextArea();
+    private JTextField firstname = new JTextField(80);
+    private JTextField lfield = new JTextField();
+    private JTextField addrField = new JTextField(20);
+    private JTextField addrField2 = new JTextField(20);
+    private JTextField addrField3 = new JTextField(20);
+    private JTextField addrField4 = new JTextField(20);
+    private JTextField telfield = new JTextField(20);
+    private JTextField mobTelfield = new JTextField();
+    private JTextArea commentsfield = new JTextArea(700,200);
+    private ButtonListener btnL = new ButtonListener();
+    private JButton save = new JButton("Save Customer Details");
+    private String input;
 	
 	public void createPanel1()
 	{

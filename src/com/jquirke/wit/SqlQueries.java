@@ -18,11 +18,9 @@ public class SqlQueries {
 	final static String password = "";
 	final static String url = "jdbc:mysql://localhost:3306/invoicejava";
 
-	Statement statement = null;
-	int updateQuery = 0;
-
-
-	Connection conn = null;
+	private Statement statement = null;
+	private int updateQuery = 0;
+	private Connection conn = null;
 	/* createStatement() is used for create statement object that is used for sending sql statements
     to the specified database. */
 	public SqlQueries(){
