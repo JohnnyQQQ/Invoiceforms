@@ -25,7 +25,7 @@ public class JTablesInfo extends JFrame{
 
 	Connection conn = null;
 	// JDBC driver name and database URL  
-	String[] columnNames = {"CustomerNumber","First Name","LastName", "Address", "Telephone"};
+	String[] columnNames = {"Customer Number","First Name","LastName", "Address", "Telephone"};
 	Object[][] data;   
 
 

@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -31,7 +32,6 @@ public class customerPanel {
     SqlQueries con = new SqlQueries();
 	
 	Labels label = new Labels();
-	TextBoxes text = new TextBoxes();
 	JTextArea textArea = new JTextArea();
 	JTextField firstname = new JTextField(80);
 	JTextField lfield = new JTextField();
@@ -101,6 +101,7 @@ public class customerPanel {
 		panel1.add(telfield);
 		
 		// Mobile
+		panel1.add(label.getMobile());
 		mobTelfield.setBounds( 440, 250, 150, 20 );
 		mobTelfield.setSize(200,30);
 		mobTelfield.getText();	
@@ -136,30 +137,45 @@ public class customerPanel {
 		
 
 	class ButtonListener implements ActionListener {
+		 String fname;
+		 String lname;
+		 @Override
+		 public void actionPerformed(ActionEvent e) {
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-		System.out.println("Button Pressed");
-			String fname = firstname.getText();
-			String lname = lfield.getText();
-			String address = addrField.getText() + " " + addrField2.getText() + " " + addrField3.getText() +" " + addrField4.getText();
-			String telephone = telfield.getText();
-			int landline  = Integer.parseInt(telephone);
-			String mobphone =  mobTelfield.getText();
-			int mobile  = Integer.parseInt(mobphone);
-			String comments  = commentsfield.getText();
-			
-			//Pass the input into the database
-		
-		con.insertCustomer(fname, lname, address, landline, mobile, comments);
-		
-		
+			 try{
+				 
+				 fname = firstname.getText();
+				 lname = lfield.getText();
+				 String address = addrField.getText() + " " + addrField2.getText() + " " + addrField3.getText() +" " + addrField4.getText();
+				 String telephone = telfield.getText();
+				 int landline  = Integer.parseInt(telephone);
+				 String mobphone =  mobTelfield.getText();
+				 int mobile  = Integer.parseInt(mobphone);
+				 String comments  = commentsfield.getText();
+				 con.insertCustomer(fname, lname, address, landline, mobile, comments);
+				 confirmMessage();
+				 clearBoxes();
+				 System.out.println("Sent to database");
+				 
+				 
+			 }catch(Exception ex){
+
+				 JOptionPane warning = new JOptionPane();
+
+				 warning.showMessageDialog(null, "Telephone Numbers must not have spaces and only numbers ", fname, JOptionPane.WARNING_MESSAGE);
+
+				 System.out.print("Number format exception");
+
+			 }
 }
 	
 	
 	  }
-	
+	/**
+	 * Output the past customers that have been entered into the 
+	 * database, onto the panel. This will make it easier to find the 
+	 * customer by customer number.
+	 */
 	public void makeJTable(){
 		try{
 		con.connection();
@@ -177,10 +193,36 @@ public class customerPanel {
 			  }
 
 
+	/**
+	 * Cleear the text boxes after the save
+	 * button has been pressed
+	 */
 	
+	public void clearBoxes(){
+		
+		firstname.setText("");
+		lfield.setText("");
+		addrField.setText("");
+		addrField2.setText("");
+		addrField3.setText("");
+		addrField4.setText("");
+		telfield.setText("");
+		commentsfield.setText("");
+		mobTelfield.setText("");
+	}
 
 		   
-	
+	public void confirmMessage(){
+		
+		JOptionPane notification= new JOptionPane();
+		notification.showMessageDialog(null, "Thank you, you have entered this customer into the database"
+				+ "\n" + "Now Click on the create invoice tab to create invoice");
+		
+		panel1.revalidate();
+		panel1.repaint();
+		
+		
+	}
 	
 }// end code
 

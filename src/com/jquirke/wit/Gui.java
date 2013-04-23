@@ -26,13 +26,16 @@ public class Gui extends JFrame implements ActionListener{
 	customerPanel  p1 = new customerPanel();
 	InvoicePanel  p2 = new InvoicePanel();
 	EditInvoices p4 = new EditInvoices();
+	ReportsPage p5 = new ReportsPage();
 	JPanel OptionsPanel = new JPanel();
 	InvoicePanel ip = new InvoicePanel();
 	SqlQueries con = new SqlQueries();
+	JLabel systemName = new JLabel("Invoice System Version 1.0 - Click Options Below");
 	JButton newInvoice = new JButton("Create New Invoice");
 	JButton newCustomer = new JButton("Create/Get Customer");
 	JButton editInvoice = new JButton("Edit Invoice Details");
 	JButton editCustomer= new JButton("Edit Customer Details");
+	JButton invReports = new JButton("Invoice Reports");
 	// Borders around the buttons
 	
 	Border raisedbevel = BorderFactory.createRaisedBevelBorder();
@@ -62,6 +65,7 @@ public class Gui extends JFrame implements ActionListener{
 		p1.createPanel1();
 		p2.createPanel2();
 		p4.editInvoicePanel();
+		p5.getReportPagel();
 
 		// Create a tabbed pane
 		
@@ -70,8 +74,9 @@ public class Gui extends JFrame implements ActionListener{
 		
 		tabbedPane.insertTab("Options", new ImageIcon("icon.png"), OptionsPanel(), "tooltip", 0);
 		tabbedPane.insertTab("Enter Customer Details", new ImageIcon("icon.png"), p1.getPanel1(), "tooltip", 1);
-		tabbedPane.insertTab("Invoice Details", new ImageIcon("icon.png"), p2.getPanel2(), "tooltip", 2);
+		tabbedPane.insertTab("Create Invoice ", new ImageIcon("icon.png"), p2.getPanel2(), "tooltip", 2);
 		tabbedPane.insertTab("Edit Customer Details", new ImageIcon("icon.png"), p4.getPanel4(), "tooltip", 3);
+		tabbedPane.insertTab("Reports Page", new ImageIcon("icon.png"), p5.getReportPagel(), "tooltip", 4);
 		
 		
 		
@@ -93,7 +98,7 @@ public void createOptionsPanel()
 	OptionsPanel.setLayout(null);
 	OptionsPanel.setBackground(Color.orange);
 	
-	JLabel systemName = new JLabel("Invoice System Version 1.0 - Click Options Below");
+	
     systemName.setForeground(Color.red);
 	systemName.setBounds( 50,10, 500, 40 );
     systemName.setFont(new Font("Serif", Font.PLAIN,20));
@@ -103,20 +108,22 @@ public void createOptionsPanel()
 	newInvoice.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
 	newInvoice.addActionListener(this);
 	
-			
 	
 	newCustomer.setBounds(240, 225, 300, 75);
 	newCustomer.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
 	newCustomer.addActionListener(this);
 	
-	
-	
+		
 	editInvoice.setBounds(240, 350, 300, 75);
 	editInvoice.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
 	editInvoice.addActionListener(this);
 	
 	
-	editCustomer.setBounds(240, 475, 300, 75);
+	invReports.setBounds(240, 475, 300, 75);
+	invReports.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
+	invReports.addActionListener(this);
+	
+	editCustomer.setBounds(240, 600, 300, 75);
 	editCustomer.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
 	editCustomer.addActionListener(this);
 	
@@ -125,6 +132,7 @@ public void createOptionsPanel()
 	OptionsPanel.add(newCustomer);
 	OptionsPanel.add(editInvoice);
 	OptionsPanel.add(editCustomer);
+	OptionsPanel.add(invReports);
 }
 
 
@@ -162,7 +170,12 @@ if(e.getSource() == editCustomer ){
 				
 	}
 
-
+if(e.getSource() == invReports ){
+	
+	
+	tabbedPane.setSelectedIndex(4);
+				
+	}
 }
 
 }
