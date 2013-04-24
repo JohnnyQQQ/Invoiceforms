@@ -37,7 +37,7 @@ public class InvoicePanel extends JPanel implements ActionListener{
 	private Labels label = new Labels();	
 	private JTextField custId =new JTextField(10);
 	private JButton searchCust = new JButton("Search Customers");
-	private JTextField qty = new JTextField(80);	
+		
 	private JTextField number = new JTextField(80);	
 	private JButton addRow = new JButton(" Add ");
 	private JTextField Desc = new JTextField();
@@ -45,6 +45,9 @@ public class InvoicePanel extends JPanel implements ActionListener{
 	private JTextField total = new JTextField();
 	private JTextArea textArea = new JTextArea();
 	private JButton newInv = new JButton("CREATE A NEW INVOICE!");
+	private JComboBox combo = new JComboBox();
+	private JComboBox qty = new JComboBox();
+	
 
 	
 	public void createPanel2()
@@ -115,8 +118,13 @@ public JTextField custId(){
 		center.add(number);	
 		//center.add(label.clerkName());
 		
-		String names[] = {"Select rep","John Quirke","Mary Jones","Paddy Purcell","Joe Blogs"};
-		JComboBox combo = new JComboBox(names);
+		
+		combo.addItem("Select rep");
+		combo.addItem("John Quirke");
+		combo.addItem("Paddy Purcell");
+		combo.addItem("Joe Blogs");
+		
+		combo.addActionListener(this);
 		combo.setBounds(430, 60, 150, 20 );
 		combo.setSize(150,30);	
 		center.add(combo);
@@ -166,7 +174,16 @@ public void enterItems(){
 	center.add(label.getTotalCost());
 	
 	qty.setBounds(10,270, 150, 20 );
-	qty.setSize(80,30);	
+	qty.setSize(80,30);
+	qty.addItem(1);
+	qty.addItem(2);
+	qty.addItem(3);
+	qty.addItem(4);
+	qty.addItem(5);
+	qty.addItem(6);
+	qty.addItem(7);
+	qty.addItem(8);
+	qty.addItem(9);
 	center.add(qty);
 	
 	Desc.setBounds(90,270, 150, 20);
@@ -192,15 +209,20 @@ public void actionPerformed(ActionEvent e) {
 	
 	if(e.getSource() == addRow ){
 		
-		String qauntity = qty.getText();
-		int quan = Integer.parseInt(qauntity);
+		
+		int quan  = Integer.valueOf((int) qty.getSelectedItem());	
 		String description = Desc.getText();
-		String units = unit.getText();
+		String units = unit.getText();		
 		int costpu = Integer.parseInt(units);
 		String totals = total.getText();
 		int totalAmt  = Integer.parseInt(totals);
+		String idNumber = custId.getText();
+		int id = Integer.parseInt(idNumber);
+		String saleRep = (String) combo.getSelectedItem();
+	
 		
-	con.insertProduct(quan,description,costpu,totalAmt) ;
+		
+	con.insertProduct(quan, description,costpu,totalAmt, id, saleRep) ;
 	
 	//customers.add();
 	customers.revalidate();
@@ -226,6 +248,8 @@ if(e.getSource() == newInv ){
 		textArea.setText(text);
 	}
 }
+
+
 
 
 }// end code

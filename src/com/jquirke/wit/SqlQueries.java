@@ -236,7 +236,7 @@ public class SqlQueries {
 	 * then to click the add button that will then enter a new
 	 * row onto the  screen
 	 */
-	public void insertProduct(int qty, String Description, int unit_cost, int total) 
+	public void insertProduct(int qty, String Description, int unit_cost, int total, int id, String rep_name) 
 
 	{
 
@@ -246,12 +246,14 @@ public class SqlQueries {
 			int units = unit_cost;
 			int totals = total;
 			connection();
-			String QueryString = "INSERT INTO products (qty,Description, unit_cost, total) " 
+			String QueryString = "INSERT INTO products (qty,Description, unit_cost, total, id, rep_name) " 
 					+ " VALUES "
 					+ "(' " + quantity    +	 " '," 
 					+ "' "  + desc    +  " '," 
 					+ " ' " + units       +  "',"
-					+ " ' " + totals +  "')";
+					+ " ' " + totals      +  "',"
+					+ " ' " + id      +  "',"
+					+ " ' " + rep_name +  "')";
 
 			statement.executeUpdate(QueryString);
 			System.out.println("1 Product added");    	
