@@ -47,6 +47,7 @@ public class InvoicePanel extends JPanel implements ActionListener{
 	private JButton newInv = new JButton("CREATE A NEW INVOICE!");
 	private JComboBox combo = new JComboBox();
 	private JComboBox qty = new JComboBox();
+	String text = con.getInvoiceNumber();
 	
 
 	
@@ -113,7 +114,7 @@ public JTextField custId(){
 		number.setBounds(430, 25, 150, 20 );
 		number.setSize(150,30);	
 		
-		String text = con.getInvoiceNumber();
+		
 		number.setText(text);
 		center.add(number);	
 		//center.add(label.clerkName());
@@ -212,7 +213,9 @@ public void actionPerformed(ActionEvent e) {
 		
 		int quan  = Integer.valueOf((int) qty.getSelectedItem());	
 		String description = Desc.getText();
-		String units = unit.getText();		
+		String units = unit.getText();
+		String invNumber = number.getText();
+		int invoiceNum = Integer.parseInt(units);
 		int costpu = Integer.parseInt(units);
 		String totals = total.getText();
 		int totalAmt  = Integer.parseInt(totals);
@@ -222,7 +225,7 @@ public void actionPerformed(ActionEvent e) {
 	
 		
 		
-	con.insertProduct(quan, description,costpu,totalAmt, id, saleRep) ;
+	con.insertProduct(quan, description,costpu,totalAmt, id, saleRep, invoiceNum) ;
 	
 	//customers.add();
 	customers.revalidate();
