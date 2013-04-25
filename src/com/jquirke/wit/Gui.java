@@ -21,7 +21,7 @@ public class Gui extends JFrame implements ActionListener{
 	
 	JTabbedPane tabbedPane;
 	JPanel topPanel = new JPanel();
-	
+	Colors color = new Colors();
 	
 	private customerPanel  p1 = new customerPanel();
 	private InvoicePanel  p2 = new InvoicePanel();
@@ -31,17 +31,18 @@ public class Gui extends JFrame implements ActionListener{
 	private InvoicePanel ip = new InvoicePanel();
 	private SqlQueries con = new SqlQueries();
 	private JLabel systemName = new JLabel("Invoice System Version 1.0 - Click Options Below");
+	
+	//Buttons
 	private JButton newInvoice = new JButton("Create New Invoice");
 	private JButton newCustomer = new JButton("Create/Get Customer");
 	private JButton editInvoice = new JButton("Edit Invoice Details");
 	private JButton editCustomer= new JButton("Edit Customer Details");
 	private JButton invReports = new JButton("Invoice Reports");
-	// Borders around the buttons
-	
+	// Borders around the buttons	
 	private Border raisedbevel = BorderFactory.createRaisedBevelBorder();
 	private Border loweredbevel = BorderFactory.createLoweredBevelBorder();
 	private Border raisedBorder = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-	private Border redline = BorderFactory.createLineBorder(Color.red);
+	private Border redline = BorderFactory.createLineBorder(color.button());
 	
 	private Border compound = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel );  
 	
@@ -49,7 +50,7 @@ public class Gui extends JFrame implements ActionListener{
 	private JLabel logo = new JLabel("", image, JLabel.CENTER);
 	
 	
-	Colors color = new Colors();
+	
 	
 
 

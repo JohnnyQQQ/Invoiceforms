@@ -114,6 +114,7 @@ public class customerPanel {
 	    
 		
 		save.setBounds( 275, 650, 150, 20 );
+		save.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 		save.setSize(200,50);
 		save.addActionListener(btnL);
 		panel1.add(save);

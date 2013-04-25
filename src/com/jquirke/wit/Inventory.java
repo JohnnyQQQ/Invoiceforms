@@ -1,5 +1,6 @@
 package com.jquirke.wit;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 
 public class Inventory {
@@ -7,10 +8,12 @@ public class Inventory {
 	
 	private JComboBox qty = new JComboBox();
 	private JComboBox  Desc = new JComboBox ();
+	private Colors color = new Colors();
 	
 	public JComboBox qtyOptions(){
 		
 		qty.setBounds(10,270, 150, 20 );
+		
 		qty.setSize(80,30);
 		qty.addItem(1);
 		qty.addItem(2);
@@ -28,6 +31,7 @@ public class Inventory {
 	public JComboBox stockOnHand(){
 		
 		Desc.setBounds(90,270, 150, 20);
+		
 		Desc.setSize(300,30);
 		Desc.addItem("Empress Single Bed");
 		Desc.addItem("Empress DoubleBed");

@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -50,6 +51,7 @@ public class EditInvoices implements ActionListener{
 		editInvoices.setBackground(color.panelCol());
 		
 		editCustNumber.setBounds(600, 100, 100, 30);
+		editCustNumber.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 		editCustNumber.addActionListener(this);
 		
 		
@@ -145,6 +147,7 @@ public void buttonCustomerEdit(){
 	
 	
 	edit.setBounds( 275, 650, 150, 20 );
+	edit.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 	edit.setSize(200,50);
 	edit.addActionListener(this);
 	editInvoices.add(edit);

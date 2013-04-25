@@ -16,7 +16,7 @@ public class ReportsPage {
 	
 	JPanel reportPanel = new JPanel();
 	Inventory invent = new Inventory();
-	JComboBox productsSold = new JComboBox();
+	
 	Colors color = new Colors();
 	
 	private SqlQueries con = new SqlQueries();	

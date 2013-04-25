@@ -50,7 +50,10 @@ public class InvoicePanel extends JPanel implements ActionListener{
 	private JButton searchCust = new JButton("Search Customers");
 	private JButton addRow = new JButton("Add Product to Invoice");
 	private JButton newInv = new JButton("CREATE A NEW INVOICE!");
+	
+	//Combo
 	private JComboBox combo = new JComboBox();
+	
 	
 	// Borders
 	Border compound;
@@ -146,6 +149,7 @@ public JTextField custId(){
 		
 		combo.addActionListener(this);
 		combo.setBounds(430, 60, 150, 20 );
+		
 		combo.setSize(150,30);	
 		center.add(combo);
 		
@@ -171,6 +175,7 @@ public JPanel getPanel2(){
 public JButton searchButton(){		
 	
 	searchCust.setBounds(600, 20, 150, 25 );
+	searchCust.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 	searchCust.addActionListener(this);
 	return searchCust;
 }
@@ -178,6 +183,7 @@ public JButton searchButton(){
 public JButton CreateNewInvoice(){		
 	
 	newInv.setBounds(10, 10, 230, 60 );
+	newInv.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 	newInv.addActionListener(this);
 	return newInv;
 }
@@ -201,13 +207,15 @@ public void enterItems(){
 
 	
 	total.setBounds(400,270, 150, 20 );
+	total.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, color.button()));
 	total.setSize(140,30);	
 	center.add(total);
 	
 	addRow.setBounds( 550, 270, 150, 20 );
+	addRow.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 	addRow.setSize(180,30);
 	addRow.addActionListener(this);
-	addRow.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
+	
 	center.add(addRow );
 }
 
