@@ -40,13 +40,14 @@ public class InvoicePanel extends JPanel implements ActionListener{
 		
 	private JTextField number = new JTextField(80);	
 	private JButton addRow = new JButton(" Add ");
-	private JTextField Desc = new JTextField();
+	//private JTextField Desc = new JTextField();
 	private JTextField unit = new JTextField();
 	private JTextField total = new JTextField();
 	private JTextArea textArea = new JTextArea();
 	private JButton newInv = new JButton("CREATE A NEW INVOICE!");
 	private JComboBox combo = new JComboBox();
-	private JComboBox qty = new JComboBox();
+	
+	Inventory invent = new Inventory();
 	String text = con.getInvoiceNumber();
 	
 
@@ -174,22 +175,10 @@ public void enterItems(){
 	center.add(label.getUnitCost());	
 	center.add(label.getTotalCost());
 	
-	qty.setBounds(10,270, 150, 20 );
-	qty.setSize(80,30);
-	qty.addItem(1);
-	qty.addItem(2);
-	qty.addItem(3);
-	qty.addItem(4);
-	qty.addItem(5);
-	qty.addItem(6);
-	qty.addItem(7);
-	qty.addItem(8);
-	qty.addItem(9);
-	center.add(qty);
+	center.add(invent.qtyOptions());
 	
-	Desc.setBounds(90,270, 150, 20);
-	Desc.setSize(300,30);	
-	center.add(Desc);
+		
+	center.add(invent.stockOnHand());
 		
 	unit.setBounds(390,270, 150, 20 );
 	unit.setSize(150,30);	
@@ -211,11 +200,11 @@ public void actionPerformed(ActionEvent e) {
 	if(e.getSource() == addRow ){
 		
 		
-		int quan  = Integer.valueOf((int) qty.getSelectedItem());	
-		String description = Desc.getText();
+		int quan  = Integer.valueOf((int) invent.qtyOptions().getSelectedItem());	
+		String description = (String) invent.stockOnHand().getSelectedItem();
 		String units = unit.getText();
 		String invNumber = number.getText();
-		int invoiceNum = Integer.parseInt(units);
+		int invoiceNum = Integer.parseInt(invNumber);
 		int costpu = Integer.parseInt(units);
 		String totals = total.getText();
 		int totalAmt  = Integer.parseInt(totals);
