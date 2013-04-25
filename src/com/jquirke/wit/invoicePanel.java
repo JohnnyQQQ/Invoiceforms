@@ -9,6 +9,8 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.sql.ResultSet;
 
 import javax.swing.BorderFactory;
@@ -28,26 +30,38 @@ import javax.swing.border.EtchedBorder;
 
 
 public class InvoicePanel extends JPanel implements ActionListener{
-	
+	private SqlQueries con = new SqlQueries();	
+	//Panels
 	private JPanel customers;
 	private JPanel top = new JPanel();
-	private SqlQueries con = new SqlQueries();	
 	private JPanel center = new JPanel();
 	private JPanel bottom = new JPanel();
-	private Labels label = new Labels();	
+	//labels
+	private Labels label = new Labels();
+	//TextFields
 	private JTextField custId =new JTextField(10);
-	private JButton searchCust = new JButton("Search Customers");
-		
 	private JTextField number = new JTextField(80);	
-	private JButton addRow = new JButton(" Add ");
-	//private JTextField Desc = new JTextField();
-	private JTextField unit = new JTextField();
 	private JTextField total = new JTextField();
 	private JTextArea textArea = new JTextArea();
+		
+	private JTextArea invoiceArea = new JTextArea();
+	
+	//Buttons
+	private JButton searchCust = new JButton("Search Customers");
+	private JButton addRow = new JButton("Add Product to Invoice");
 	private JButton newInv = new JButton("CREATE A NEW INVOICE!");
 	private JComboBox combo = new JComboBox();
 	
+	// Borders
+	Border compound;
+	Border redline = BorderFactory.createLineBorder(Color.red);
+	Border raisedbevel = BorderFactory.createRaisedBevelBorder();
+	Border loweredbevel = BorderFactory.createLoweredBevelBorder();
+	Border raisedBorder = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
+	
 	Inventory invent = new Inventory();
+	
+	
 	String text = con.getInvoiceNumber();
 	
 
@@ -98,7 +112,7 @@ public class InvoicePanel extends JPanel implements ActionListener{
 public JTextField custId(){		
 		
 		custId.setBounds( 540, 20,50, 25);
-		custId.setText(con.getLastCustomer());
+	  
 		return custId;
 	}
 	
@@ -115,10 +129,10 @@ public JTextField custId(){
 		number.setBounds(430, 25, 150, 20 );
 		number.setSize(150,30);	
 		
-		
-		number.setText(text);
+	
+	    number.setText(text);
 		center.add(number);	
-		//center.add(label.clerkName());
+		center.add(label.clerkName());
 		
 		
 		combo.addItem("Select rep");
@@ -130,6 +144,10 @@ public JTextField custId(){
 		combo.setBounds(430, 60, 150, 20 );
 		combo.setSize(150,30);	
 		center.add(combo);
+		
+		invoiceArea.setBounds(20,360, 500, 150);
+		center.add(invoiceArea);
+		center.add(label.invoiceDetails());
 		
 		
 		top.add(CreateNewInvoice());
@@ -172,25 +190,20 @@ public void enterItems(){
 	
 	center.add(label.getQty());	
 	center.add(label.getDesc());	
-	center.add(label.getUnitCost());	
 	center.add(label.getTotalCost());
-	
 	center.add(invent.qtyOptions());
-	
-		
 	center.add(invent.stockOnHand());
 		
-	unit.setBounds(390,270, 150, 20 );
-	unit.setSize(150,30);	
-	center.add(unit);
+
 	
-	total.setBounds(540,270, 150, 20 );
-	total.setSize(150,30);	
+	total.setBounds(400,270, 150, 20 );
+	total.setSize(140,30);	
 	center.add(total);
 	
-	addRow.setBounds( 690, 270, 150, 20 );
-	addRow.setSize(80,30);
+	addRow.setBounds( 550, 270, 150, 20 );
+	addRow.setSize(180,30);
 	addRow.addActionListener(this);
+	addRow.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
 	center.add(addRow );
 }
 
@@ -202,19 +215,17 @@ public void actionPerformed(ActionEvent e) {
 		
 		int quan  = Integer.valueOf((int) invent.qtyOptions().getSelectedItem());	
 		String description = (String) invent.stockOnHand().getSelectedItem();
-		String units = unit.getText();
 		String invNumber = number.getText();
-		int invoiceNum = Integer.parseInt(invNumber);
-		int costpu = Integer.parseInt(units);
+		int invoiceNum = Integer.parseInt(invNumber);		
 		String totals = total.getText();
 		int totalAmt  = Integer.parseInt(totals);
 		String idNumber = custId.getText();
 		int id = Integer.parseInt(idNumber);
 		String saleRep = (String) combo.getSelectedItem();
 	
+		invoiceArea.setText("  " + quan + "  " +description+ "  " + totalAmt +"\n" );
 		
-		
-	con.insertProduct(quan, description,costpu,totalAmt, id, saleRep, invoiceNum) ;
+	con.insertProduct(quan, description,totalAmt, id, saleRep, invoiceNum) ;
 	
 	//customers.add();
 	customers.revalidate();
@@ -234,14 +245,16 @@ public void actionPerformed(ActionEvent e) {
 	
 if(e.getSource() == newInv ){
 		
-		String custNum = custId().getText();	
+		String custNum = con.getLastCustomer();	
+		custId.setText(con.getLastCustomer());
 		int custnumber =Integer.parseInt(custNum);
 		String text = con.getCustomer(custnumber);
 		textArea.setText(text);
 	}
+
+
+
 }
-
-
 
 
 }// end code

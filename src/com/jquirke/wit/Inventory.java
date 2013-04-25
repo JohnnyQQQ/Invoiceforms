@@ -4,6 +4,7 @@ import javax.swing.JComboBox;
 
 public class Inventory {
 	
+	
 	private JComboBox qty = new JComboBox();
 	private JComboBox  Desc = new JComboBox ();
 	

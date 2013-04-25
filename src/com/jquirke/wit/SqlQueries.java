@@ -3,8 +3,10 @@ import java.awt.FlowLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
@@ -38,7 +40,7 @@ public class SqlQueries {
 			statement = conn.createStatement();
 			java.sql.DatabaseMetaData dbMetaData = conn.getMetaData();
 			String productName = dbMetaData.getDatabaseProductName();
-			//     System.out.println("Database: " + productName);
+			//    System.out.println("Database: " + productName);
 			String productVersion = dbMetaData.getDatabaseProductVersion();
 			//    System.out.println("Version: " + productVersion);
 
@@ -105,6 +107,7 @@ public class SqlQueries {
 	 * Returns the contents of the database by 
 	 * using a while loop
 	 * @return 
+	 * 
 	 */
 
 
@@ -138,7 +141,12 @@ public class SqlQueries {
 			e.printStackTrace();
 		}
 
-
+		try {
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -146,6 +154,7 @@ public class SqlQueries {
 	 * telephone number
 	 * @param number
 	 * @return
+	 *
 	 */
 
 	public String getCustomer(int number){
@@ -170,8 +179,19 @@ public class SqlQueries {
 					+"\n" + "Address :" + rs.getString("address") 
 					+"\n" + "Telephone :" +rs.getString("telephone")
 					+"\n" + "Mobile number" + rs.getString("mobile") ;
+			
 		}catch(Exception e){
-
+			JOptionPane warning = new JOptionPane();
+			warning.showMessageDialog(null, "You have entered an incorrect customer number" + "\n" + "into the database"	
+			+ "\n" + "Check Customer Numbers on the " 
+			+ "\n" +"New Customer Tab");
+			
+			
+		}
+		try {
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -179,9 +199,10 @@ public class SqlQueries {
 
 	/**
 	 * Get the invoice number and place it on the invoice form
+	 * 
 	 */
 
-	public String getInvoiceNumber(){
+	public String getInvoiceNumber() {
 
 		try{
 
@@ -199,6 +220,12 @@ public class SqlQueries {
 
 			e.printStackTrace();
 		}
+		try {
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 
 
@@ -207,6 +234,7 @@ public class SqlQueries {
 	/**
 	 * Increase the invoice number when 
 	 * create a new invoice is created
+	 *
 	 */
 
 	public void increaseInvoiceNumber(){
@@ -227,7 +255,12 @@ public class SqlQueries {
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-
+		try {
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -235,8 +268,9 @@ public class SqlQueries {
 	 * Enter products into the database
 	 * then to click the add button that will then enter a new
 	 * row onto the  screen
+	 * 
 	 */
-	public void insertProduct(int qty, String Description, int unit_cost, int total, int id, String rep_name, int invoiceNumber) 
+	public void insertProduct(int qty, String Description, int total, int id, String rep_name, int invoiceNumber)
 
 	{
 
@@ -246,11 +280,10 @@ public class SqlQueries {
 			int units = unit_cost;
 			int totals = total;
 			connection();*/
-			String QueryString = "INSERT INTO products (qty,Description, unit_cost, total, id, rep_name, invoice_id) " 
+			String QueryString = "INSERT INTO products (qty,Description,total, id, rep_name, invoice_id) " 
 					+ " VALUES "
 					+ "(' " + qty    +	 " '," 
 					+ "' "  + Description   +  " '," 
-					+ " ' " + unit_cost       +  "',"
 					+ " ' " + total      +  "',"
 					+ " ' " + id      +  "',"
 					+ " ' " + rep_name      +  "',"
@@ -267,7 +300,12 @@ public class SqlQueries {
 			e.printStackTrace();
 		}
 
-
+		try {
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -277,6 +315,7 @@ public class SqlQueries {
 	 * telephone number
 	 * @param number
 	 * @return
+	 * @throws SQLException 
 	 */
 
 	public String setCustomer(){
@@ -304,6 +343,12 @@ public class SqlQueries {
 
 		}catch(Exception e){
 
+			e.printStackTrace();
+		}
+		try {
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -360,6 +405,7 @@ public class SqlQueries {
 	 * Get the last customer number invoice to populate
 	 * the customer field
 	 * @return
+	 * @throws SQLException 
 	 */
 
 	public String getLastCustomer(){
@@ -376,10 +422,20 @@ public class SqlQueries {
 
 			e.printStackTrace();
 		}
+		
+		try {
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;   	
 
 	}
-
+public void getProduct(){
+	
+	
+}
 
 }// end SQL Queries code
 

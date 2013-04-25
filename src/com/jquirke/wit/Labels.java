@@ -92,17 +92,19 @@ public class Labels {
 		return desc;		
 	}
 	
-	public JLabel getUnitCost(){		
-		JLabel uc= new JLabel(" UNIT COST  ");
-		uc.setBounds( 440,250, 150, 20 );
-		uc.setFont(new Font("Verdana", Font.BOLD,14));
-		return uc;		
-	}
+
 	
 	public JLabel getTotalCost(){		
 		JLabel tc= new JLabel("TOTAL COST  ");
-		tc.setBounds( 575,250, 150, 20 );
+		tc.setBounds( 400,250, 150, 20 );
 		tc.setFont(new Font("Verdana", Font.BOLD,14));
 		return tc;		
+	}
+	
+	public JLabel invoiceDetails(){		
+		JLabel invDetails = new JLabel("Invoice details: ");
+		invDetails.setBounds( 20,330, 150, 20 );
+		invDetails.setFont(new Font("Verdana", Font.BOLD,14));
+		return invDetails;		
 	}
 }// end labels

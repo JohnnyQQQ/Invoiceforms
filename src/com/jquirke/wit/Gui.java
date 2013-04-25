@@ -73,7 +73,7 @@ public class Gui extends JFrame implements ActionListener{
 		tabbedPane.setUI(new BasicTabbedPaneUI());
 		
 		tabbedPane.insertTab("Options", new ImageIcon("icon.png"), OptionsPanel(), "tooltip", 0);
-		tabbedPane.insertTab("Enter Customer Details", new ImageIcon("icon.png"), p1.getPanel1(), "tooltip", 1);
+		tabbedPane.insertTab("Customer Details", new ImageIcon("icon.png"), p1.getPanel1(), "tooltip", 1);
 		tabbedPane.insertTab("Create Invoice ", new ImageIcon("icon.png"), p2.getPanel2(), "tooltip", 2);
 		tabbedPane.insertTab("Edit Customer Details", new ImageIcon("icon.png"), p4.getPanel4(), "tooltip", 3);
 		tabbedPane.insertTab("Reports Page", new ImageIcon("icon.png"), p5.getReportPagel(), "tooltip", 4);
@@ -104,26 +104,26 @@ public void createOptionsPanel()
     systemName.setFont(new Font("Serif", Font.PLAIN,20));
     
 	
-	newInvoice.setBounds(240, 100, 300, 75);
+	newInvoice.setBounds(240, 300, 300, 75);
 	newInvoice.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
 	newInvoice.addActionListener(this);
 	
 	
-	newCustomer.setBounds(240, 225, 300, 75);
+	newCustomer.setBounds(30, 400, 300, 75);
 	newCustomer.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
 	newCustomer.addActionListener(this);
 	
 		
-	editInvoice.setBounds(240, 350, 300, 75);
+	editInvoice.setBounds(425, 400, 300, 75);
 	editInvoice.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
 	editInvoice.addActionListener(this);
 	
 	
-	invReports.setBounds(240, 475, 300, 75);
+	invReports.setBounds(30, 500, 300, 75);
 	invReports.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
 	invReports.addActionListener(this);
 	
-	editCustomer.setBounds(240, 600, 300, 75);
+	editCustomer.setBounds(425, 500, 300, 75);
 	editCustomer.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
 	editCustomer.addActionListener(this);
 	
