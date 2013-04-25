@@ -17,6 +17,7 @@ public class ReportsPage {
 	JPanel reportPanel = new JPanel();
 	Inventory invent = new Inventory();
 	JComboBox productsSold = new JComboBox();
+	Colors color = new Colors();
 	
 	private SqlQueries con = new SqlQueries();	
 	
@@ -30,10 +31,11 @@ public class ReportsPage {
 	public void createReportPanel(){
 		
 		
-		reportPanel .setLayout(null);
+		reportPanel.setLayout(null);
+		reportPanel.setBackground(color.panelCol());
 		JLabel invoiceTitle = new JLabel("Reports Page: ");
 		
-		invoiceTitle.setForeground(Color.red);
+		invoiceTitle.setForeground(color.headingCol());
 		invoiceTitle.setBounds( 10,10, 500, 40 );
 		invoiceTitle.setFont(new Font("Serif", Font.PLAIN,20));
 		

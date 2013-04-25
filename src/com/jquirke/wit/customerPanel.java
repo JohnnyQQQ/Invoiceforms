@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 
 public class customerPanel {
 	
-	JPanel panel1;
+	JPanel panel1 = new JPanel();
 	
     SqlQueries con = new SqlQueries();
 	
@@ -45,15 +45,17 @@ public class customerPanel {
     private ButtonListener btnL = new ButtonListener();
     private JButton save = new JButton("Save Customer Details");
     private String input;
+    Colors color = new Colors();
 	
 	public void createPanel1()
 	{
 		JLabel customerTitle = new JLabel("Please enter Customer Details: ");
-		customerTitle.setForeground(Color.red);
+		customerTitle.setForeground(color.headingCol());
 		customerTitle.setBounds( 50,10, 500, 40 );
 		customerTitle.setFont(new Font("Serif", Font.PLAIN,20));
 	    
-		panel1 = new JPanel();
+		
+		panel1.setBackground(color.panelCol());
 		panel1.setLayout( null );
 		panel1.setPreferredSize(new Dimension(775, 730));
 		

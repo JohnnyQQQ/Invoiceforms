@@ -45,6 +45,11 @@ public class Gui extends JFrame implements ActionListener{
 	
 	private Border compound = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel );  
 	
+	private ImageIcon image = new ImageIcon("images/businessLogo.fw.png");
+	private JLabel logo = new JLabel("", image, JLabel.CENTER);
+	
+	
+	Colors color = new Colors();
 	
 
 
@@ -53,7 +58,7 @@ public class Gui extends JFrame implements ActionListener{
 		
 		setTitle( "Customer Invoice System John Quirke 2013" );
 		setSize( 800, 800 );
-		setBackground( Color.blue );
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		
@@ -96,37 +101,39 @@ public int indexNumber(int number){
 public void createOptionsPanel()
 {
 	OptionsPanel.setLayout(null);
-	OptionsPanel.setBackground(Color.orange);
+	OptionsPanel.setBackground(color.panelCol());
 	
+	logo.setBounds(150,20, 450,300);
 	
-    systemName.setForeground(Color.red);
+    systemName.setForeground(color.headingCol());
 	systemName.setBounds( 50,10, 500, 40 );
     systemName.setFont(new Font("Serif", Font.PLAIN,20));
     
 	
 	newInvoice.setBounds(240, 300, 300, 75);
-	newInvoice.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
+	newInvoice.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 	newInvoice.addActionListener(this);
 	
 	
 	newCustomer.setBounds(30, 400, 300, 75);
-	newCustomer.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
+	newCustomer.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 	newCustomer.addActionListener(this);
 	
 		
 	editInvoice.setBounds(425, 400, 300, 75);
-	editInvoice.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
+	editInvoice.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 	editInvoice.addActionListener(this);
 	
 	
 	invReports.setBounds(30, 500, 300, 75);
-	invReports.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
+	invReports.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 	invReports.addActionListener(this);
 	
 	editCustomer.setBounds(425, 500, 300, 75);
-	editCustomer.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, Color.red));
+	editCustomer.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 	editCustomer.addActionListener(this);
 	
+	OptionsPanel.add(logo);
 	OptionsPanel.add(systemName);
 	OptionsPanel.add(newInvoice);
 	OptionsPanel.add(newCustomer);

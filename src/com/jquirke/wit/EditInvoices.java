@@ -28,25 +28,26 @@ public class EditInvoices implements ActionListener{
 	private JTextField telfield = new JTextField(20);
 	private JTextField mobTelfield = new JTextField();
 	private JButton edit = new JButton("Edit Customer Details");
+	Colors color = new Colors();
 	
 	public void editInvoicePanel(){
 		
 		editInvoices.setLayout(null);
 		
 		JLabel editNotice = new JLabel("Here You can Edit, Update And Delete customers");
-		editNotice.setForeground(Color.red);
+		editNotice.setForeground(color.headingCol());
 		editNotice.setBounds( 50,10, 500, 40 );
 		editNotice.setFont(new Font("Serif", Font.PLAIN,20));
 		
 		JLabel editCustLabel = new JLabel("Enter Customer Number to Edit: ");
-		editCustLabel.setForeground(Color.red);
+		editCustLabel.setForeground(color.headingCol());
 		editCustLabel.setBounds(30, 100, 400, 30);
 		editCustLabel.setFont(new Font("Serif", Font.PLAIN,25));
 		
 		
 		editBox.setBounds(450, 100, 100, 30);
 		
-		
+		editInvoices.setBackground(color.panelCol());
 		
 		editCustNumber.setBounds(600, 100, 100, 30);
 		editCustNumber.addActionListener(this);

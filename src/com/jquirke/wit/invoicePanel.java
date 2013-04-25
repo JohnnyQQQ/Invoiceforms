@@ -32,7 +32,7 @@ import javax.swing.border.EtchedBorder;
 public class InvoicePanel extends JPanel implements ActionListener{
 	private SqlQueries con = new SqlQueries();	
 	//Panels
-	private JPanel customers;
+	private JPanel customers  = new JPanel();
 	private JPanel top = new JPanel();
 	private JPanel center = new JPanel();
 	private JPanel bottom = new JPanel();
@@ -63,17 +63,20 @@ public class InvoicePanel extends JPanel implements ActionListener{
 	
 	
 	String text = con.getInvoiceNumber();
+	Colors color = new Colors();
 	
 
 	
 	public void createPanel2()
 	{
 		// North Panel
-		customers = new JPanel();
+		
+		customers.setBackground(color.panelCol());
 		customers.setLayout(new BorderLayout());
 		customers.setPreferredSize(new Dimension(775, 730));
 		
 		top.setLayout(null);
+		top.setBackground(color.panelCol());
 		top.setPreferredSize(new Dimension(775, 75));
 		
 		top.add(label.findCust());
@@ -89,6 +92,7 @@ public class InvoicePanel extends JPanel implements ActionListener{
 		
 		// Centre panel to be customer details
 		center.setLayout(null);
+		center.setBackground(color.panelCol());
 		center.setPreferredSize(new Dimension(775, 730));	
 		textArea.setBounds( 10, 25, 200,175);
 		textArea.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 2, 16)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
