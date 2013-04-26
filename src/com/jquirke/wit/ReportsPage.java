@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class ReportsPage implements ActionListener {
@@ -19,7 +20,7 @@ public class ReportsPage implements ActionListener {
 	JTextField custIdNumber = new JTextField();
 	JButton detailsBtn = new JButton("Find Customers Details");
 	JLabel invoiceTitle = new JLabel("Reports Page: ");
-	JTextField custDetails = new JTextField();
+	JTextArea custDetails = new JTextArea();
 	SqlQueries con = new SqlQueries();
 	Colors color = new Colors();
 		
@@ -49,10 +50,10 @@ public class ReportsPage implements ActionListener {
 		custIdNumber.setBounds(10,80,100,30);
 		
 		
-		detailsBtn.setBounds(130,80,200,30);
+		detailsBtn.setBounds(130,80,300,30);
 		detailsBtn.addActionListener(this);
 		
-		custDetails.setBounds(10,130,300,200);
+		custDetails.setBounds(10,130,400,200);
 		custDetails.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer Purchases", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 2, 16)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
 		
 		
@@ -79,10 +80,14 @@ public class ReportsPage implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource() == detailsBtn ){
+			
 			int idNum  = Integer.parseInt(custIdNumber.getText());
 			
-			String cust = con.customerDetails(idNum);
-			custDetails.setText(cust);
+			
+			custDetails.append(con.customerDetails(idNum ));
+			
+			
+			
 			
 		}
 		

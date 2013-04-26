@@ -17,6 +17,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -50,6 +51,7 @@ public class InvoicePanel extends JPanel implements ActionListener{
 	private JButton searchCust = new JButton("Search Customers");
 	private JButton addRow = new JButton("Add Product to Invoice");
 	private JButton newInv = new JButton("CREATE A NEW INVOICE!");
+	private JButton confirm = new JButton("Confirm Order");
 	
 	//Combo
 	private JComboBox combo = new JComboBox();
@@ -98,9 +100,14 @@ public class InvoicePanel extends JPanel implements ActionListener{
 		textArea.setBounds( 10, 25, 200,175);
 		textArea.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 2, 16)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
 		
-		String cust = con.setCustomer();
-		textArea.setText(cust);
+		//String cust = con.setCustomer();
+		//textArea.setText(cust);
 		
+	  	confirm.setBounds(550, 400, 150,50);
+		confirm.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
+		confirm.addActionListener(this);
+	
+		center.add(confirm);
 		center.add(textArea);	
 		
 		// Add to top panel
@@ -221,7 +228,7 @@ public void actionPerformed(ActionEvent e) {
 	
 	if(e.getSource() == addRow ){
 		
-		
+		try{
 		int quan  = Integer.valueOf((int) invent.qtyOptions().getSelectedItem());	
 		String description = (String) invent.stockOnHand().getSelectedItem();
 		String invNumber = number.getText();
@@ -232,24 +239,37 @@ public void actionPerformed(ActionEvent e) {
 		int id = Integer.parseInt(idNumber);
 		String saleRep = (String) combo.getSelectedItem();
 	
-		invoiceArea.setText("  " + quan + "  " +description+ "  " + totalAmt +"\n" );
+		invoiceArea.append("  " + quan + "  " +description+ "  " + totalAmt +"\n" );
 		
 	con.insertProduct(quan, description,totalAmt, id, saleRep, invoiceNum) ;
+		}catch(NumberFormatException nfe){
+			
+			JOptionPane notice = new JOptionPane();
+			notice.showMessageDialog(null, "Please enter a cost price ", text, JOptionPane.WARNING_MESSAGE);
+			System.out.println("Confirm pressed");
+			System.out.print("No number entered");
+		}
 	
 	//customers.add();
-	customers.revalidate();
-	validate();
+	
 	
 	System.out.println("Entered product");
 				
 	}
 	
 	if(e.getSource() == searchCust){
-		
+		try{
 		String custNum = custId().getText();	
 		int custnumber =Integer.parseInt(custNum);
 		String text = con.getCustomer(custnumber);
 		textArea.setText(text);
+		}catch(Exception f){
+			
+			JOptionPane notice = new JOptionPane();
+			notice.showMessageDialog(null, "Please enter a Customer number", text, JOptionPane.WARNING_MESSAGE);
+			System.out.println("Confirm pressed");
+			System.out.print("No number entered");
+		}
 	}
 	
 if(e.getSource() == newInv ){
@@ -259,7 +279,17 @@ if(e.getSource() == newInv ){
 		int custnumber =Integer.parseInt(custNum);
 		String text = con.getCustomer(custnumber);
 		textArea.setText(text);
+		
 	}
+
+if(e.getSource() == confirm ){
+	
+	 JOptionPane notice = new JOptionPane();
+
+	 notice.showMessageDialog(null, "Thank you your order has been confirmed ", text, JOptionPane.WARNING_MESSAGE);
+	System.out.println("Confirm pressed");
+	
+}
 
 
 

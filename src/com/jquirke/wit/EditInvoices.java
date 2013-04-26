@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -16,11 +17,11 @@ public class EditInvoices implements ActionListener{
 
 	private JPanel editInvoices = new JPanel();
 	private SqlQueries con = new SqlQueries();
-	private JButton editCustNumber = new JButton("Lookup!");
 	private JTextArea custDetails = new JTextArea();
-	private JTextField editBox = new JTextField(40);
 	private Labels label = new Labels();
+	// Textfields
 	private JTextField firstname = new JTextField(80);
+	private JTextField editBox = new JTextField(40);
 	private JTextField lfield = new JTextField();
 	private JTextField addrField = new JTextField(20);
 	private JTextField addrField2 = new JTextField(20);
@@ -28,6 +29,8 @@ public class EditInvoices implements ActionListener{
 	private JTextField addrField4 = new JTextField(20);
 	private JTextField telfield = new JTextField(20);
 	private JTextField mobTelfield = new JTextField();
+	
+	private JButton editCustNumber = new JButton("Lookup!");
 	private JButton edit = new JButton("Edit Customer Details");
 	Colors color = new Colors();
 	
@@ -146,7 +149,7 @@ public void editCustomerDetails(){
 public void buttonCustomerEdit(){
 	
 	
-	edit.setBounds( 275, 650, 150, 20 );
+	edit.setBounds( 275, 620, 150, 20 );
 	edit.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 	edit.setSize(200,50);
 	edit.addActionListener(this);
@@ -158,18 +161,24 @@ public void buttonCustomerEdit(){
 @Override
 public void actionPerformed(ActionEvent e) {
 	
-
+try{
 	if(e.getSource() == editCustNumber ){
 		
 		String custNum = editBox.getText();	
 		int custnumber =Integer.parseInt(custNum);
 		String text = con.getCustomer(custnumber);
 		custDetails.setText(text);
-		
-	}
+			}
+}catch(Exception num){
+	 
+	 JOptionPane notice = new JOptionPane();
+		notice.showMessageDialog(null, "Please enter a Customer number",null, JOptionPane.WARNING_MESSAGE);
+		System.out.println("Confirm pressed");
+		System.out.print("No number entered");
+}
 	
 if(e.getSource() == edit ){
-	
+	 try{
 	String custNum = editBox.getText();	
 	int rowNumber =Integer.parseInt(custNum);
 	
@@ -182,6 +191,14 @@ if(e.getSource() == edit ){
 	int mobile  = Integer.parseInt(mobphone);
 	con.UpdateCustomer(fname, lname, address, landline, mobile, rowNumber);
 	System.out.print("Edit Button Pressed");
+	
+	 }catch(Exception num){
+		 
+		 JOptionPane notice = new JOptionPane();
+			notice.showMessageDialog(null, "Please enter a Customer number",null, JOptionPane.WARNING_MESSAGE);
+			System.out.println("Confirm pressed");
+			System.out.print("No number entered");
+	 }
 		
 	}
 }

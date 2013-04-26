@@ -293,6 +293,7 @@ public class SqlQueries {
 
 			statement.executeUpdate(QueryString);
 			System.out.println("1 Product added");    	
+			
 		}
 		catch (java.lang.NumberFormatException e){    		
 			System.out.println("number format exception " );
@@ -302,12 +303,7 @@ public class SqlQueries {
 			e.printStackTrace();
 		}
 
-		try {
-			statement.close();
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
+		
 
 	}
 
@@ -417,7 +413,7 @@ public class SqlQueries {
 			statement.executeQuery("SELECT id FROM customers ");    		 
 			ResultSet rs = statement.getResultSet();    
 			rs.last();       	        	 
-			String custNo = Integer.toString(rs.getInt("id"));
+			String custNo =Integer.toString(rs.getInt("id"));
 			return custNo;
 
 		}catch(Exception e){
@@ -442,6 +438,8 @@ public String customerDetails(int custNumber){
 	
 	connection();
 	
+	String custPurch = null;
+	
 	try {
 		statement.executeQuery("SELECT qty, Description, date_entered, fname, lname FROM products " +
 				"INNER JOIN customers ON products.id = "
@@ -464,14 +462,18 @@ public String customerDetails(int custNumber){
 		int quantity =   rs.getInt("qty") ;
 		Date date =      rs.getDate(3);
 		
-		String custPurch = date + " " + quantity+ " " + custDes ;
+		custPurch =  quantity + " " + custDes + " " + date ;
 		
 		
 		
-		System.out.println(custPurch);
-		return custname + custPurch;
+		return custname +"\n"+ custPurch;
 		
 		}
+		
+		return custname +"\n"+ custPurch;
+		
+		
+		
 		
 		
 		
@@ -480,7 +482,8 @@ public String customerDetails(int custNumber){
 		
 		e.printStackTrace();
 	}
-	return null; 
+	
+	return null;
 	
 	
 	
