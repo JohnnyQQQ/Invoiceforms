@@ -78,11 +78,11 @@ public class Gui extends JFrame implements ActionListener{
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.WRAP_TAB_LAYOUT);
 		tabbedPane.setUI(new BasicTabbedPaneUI());
 		
-		tabbedPane.insertTab("Options", new ImageIcon("icon.png"), OptionsPanel(), "tooltip", 0);
-		tabbedPane.insertTab("Customer Details", new ImageIcon("icon.png"), p1.getPanel1(), "tooltip", 1);
-		tabbedPane.insertTab("Create Invoice ", new ImageIcon("icon.png"), p2.getPanel2(), "tooltip", 2);
-		tabbedPane.insertTab("Edit Customer Details", new ImageIcon("icon.png"), p4.getPanel4(), "tooltip", 3);
-		tabbedPane.insertTab("Reports Page", new ImageIcon("icon.png"), p5.getReportPagel(), "tooltip", 4);
+		tabbedPane.insertTab("Options", new ImageIcon("images/icon.fw.png"), OptionsPanel(), "tooltip", 0);
+		tabbedPane.insertTab("Customer Details", new ImageIcon("images/icon.fw.png"), p1.getPanel1(), "tooltip", 1);
+		tabbedPane.insertTab("Create Invoice ", new ImageIcon("images/icon.fw.png"), p2.getPanel2(), "tooltip", 2);
+		tabbedPane.insertTab("Edit Customer Details", new ImageIcon("images/icon.fw.png"), p4.getPanel4(), "tooltip", 3);
+		tabbedPane.insertTab("Reports Page", new ImageIcon("images/icon.fw.png"), p5.getReportPagel(), "tooltip", 4);
 		
 		
 		

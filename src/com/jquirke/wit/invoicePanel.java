@@ -63,8 +63,6 @@ public class InvoicePanel extends JPanel implements ActionListener{
 	Border raisedBorder = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
 	
 	Inventory invent = new Inventory();
-	
-	
 	String text = con.getInvoiceNumber();
 	Colors color = new Colors();
 	
@@ -99,8 +97,10 @@ public class InvoicePanel extends JPanel implements ActionListener{
 		center.setPreferredSize(new Dimension(775, 730));	
 		textArea.setBounds( 10, 25, 200,175);
 		textArea.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 2, 16)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+		
 		String cust = con.setCustomer();
 		textArea.setText(cust);
+		
 		center.add(textArea);	
 		
 		// Add to top panel
@@ -135,12 +135,10 @@ public JTextField custId(){
 		center.add(label.getInvoiceNumber());
 		number.setBounds(430, 25, 150, 20 );
 		number.setSize(150,30);	
-		
-	
+			
 	    number.setText(text);
 		center.add(number);	
 		center.add(label.clerkName());
-		
 		
 		combo.addItem("Select rep");
 		combo.addItem("John Quirke");
@@ -156,8 +154,7 @@ public JTextField custId(){
 		invoiceArea.setBounds(20,360, 500, 150);
 		center.add(invoiceArea);
 		center.add(label.invoiceDetails());
-		
-		
+				
 		top.add(CreateNewInvoice());
 			
 	}

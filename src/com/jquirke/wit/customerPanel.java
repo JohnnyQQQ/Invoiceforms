@@ -32,7 +32,11 @@ public class customerPanel {
     SqlQueries con = new SqlQueries();
 	
     private Labels label = new Labels();
+    
     private JTextArea textArea = new JTextArea();
+    private JTextArea commentsfield = new JTextArea(700,200);
+    
+    // Texfields
     private JTextField firstname = new JTextField(80);
     private JTextField lfield = new JTextField();
     private JTextField addrField = new JTextField(20);
@@ -41,10 +45,11 @@ public class customerPanel {
     private JTextField addrField4 = new JTextField(20);
     private JTextField telfield = new JTextField(20);
     private JTextField mobTelfield = new JTextField();
-    private JTextArea commentsfield = new JTextArea(700,200);
+    
+    
     private ButtonListener btnL = new ButtonListener();
     private JButton save = new JButton("Save Customer Details");
-    private String input;
+ 
     Colors color = new Colors();
 	
 	public void createPanel1()

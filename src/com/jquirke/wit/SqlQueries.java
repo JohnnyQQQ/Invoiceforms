@@ -1,6 +1,7 @@
 package com.jquirke.wit;
 import java.awt.FlowLayout;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +26,7 @@ public class SqlQueries {
 	private Connection conn = null;
 	/* createStatement() is used for create statement object that is used for sending sql statements
     to the specified database. */
+	String newline = System.getProperty("line.separator");
 	public SqlQueries(){
 
 		//insertCustomer();
@@ -144,7 +146,7 @@ public class SqlQueries {
 		try {
 			statement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -191,7 +193,7 @@ public class SqlQueries {
 		try {
 			statement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return null;
@@ -223,7 +225,7 @@ public class SqlQueries {
 		try {
 			statement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		return null;
@@ -258,7 +260,7 @@ public class SqlQueries {
 		try {
 			statement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -303,7 +305,7 @@ public class SqlQueries {
 		try {
 			statement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -348,7 +350,7 @@ public class SqlQueries {
 		try {
 			statement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		return null;
@@ -413,7 +415,7 @@ public class SqlQueries {
 		try{
 			connection();
 			statement.executeQuery("SELECT id FROM customers ");    		 
-			ResultSet rs = statement.getResultSet ();    
+			ResultSet rs = statement.getResultSet();    
 			rs.last();       	        	 
 			String custNo = Integer.toString(rs.getInt("id"));
 			return custNo;
@@ -426,16 +428,65 @@ public class SqlQueries {
 		try {
 			statement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		return null;   	
 
 	}
-public void getProduct(){
+/**
+ * Customer reports Queries
+ */
+	
+public String customerDetails(int custNumber){
+	
+	connection();
+	
+	try {
+		statement.executeQuery("SELECT qty, Description, date_entered, fname, lname FROM products " +
+				"INNER JOIN customers ON products.id = "
+				+custNumber +" AND "+" customers.id =" 
+				+custNumber);
+		
+		ResultSet rs = statement.getResultSet();
+		
+		// Get name of Customer
+		rs.first();
+		
+		String custname = "Customer: " + rs.getString("fname") + rs.getString("lname");
+		System.out.println(custname);
+	    
+	   	    
+		// Products Bought
+		while (rs.next ()){
+	    
+		String custDes = rs.getString("Description");
+		int quantity =   rs.getInt("qty") ;
+		Date date =      rs.getDate(3);
+		
+		String custPurch = date + " " + quantity+ " " + custDes ;
+		
+		
+		
+		System.out.println(custPurch);
+		return custname + custPurch;
+		
+		}
+		
+		
+		
+		
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}
+	return null; 
+	
 	
 	
 }
+
+
 
 }// end SQL Queries code
 

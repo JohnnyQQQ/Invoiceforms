@@ -12,15 +12,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ReportsPage {
+public class ReportsPage implements ActionListener {
 	
 	JPanel reportPanel = new JPanel();
 	Inventory invent = new Inventory();
-	
+	JTextField custIdNumber = new JTextField();
+	JButton detailsBtn = new JButton("Find Customers Details");
+	JLabel invoiceTitle = new JLabel("Reports Page: ");
+	JTextField custDetails = new JTextField();
+	SqlQueries con = new SqlQueries();
 	Colors color = new Colors();
-	
-	private SqlQueries con = new SqlQueries();	
-	
+		
 	public ReportsPage(){
 		
 		createReportPanel();
@@ -43,12 +45,18 @@ public class ReportsPage {
 		salesReports.setBounds(10,40,500,30);
 		
 		
-		JTextField custIdNumber = new JTextField();
+		
 		custIdNumber.setBounds(10,80,100,30);
 		
-		JButton detailsBtn = new JButton("Find Customers Details");
-		detailsBtn.setBounds(130,80,200,30);
 		
+		detailsBtn.setBounds(130,80,200,30);
+		detailsBtn.addActionListener(this);
+		
+		custDetails.setBounds(10,130,300,200);
+		custDetails.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer Purchases", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 2, 16)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+		
+		
+		reportPanel.add(custDetails);
 		reportPanel.add(detailsBtn);
 		reportPanel.add(salesReports);
 		reportPanel.add(invoiceTitle);
@@ -64,6 +72,20 @@ public class ReportsPage {
 		
 		
 		return reportPanel;
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if (e.getSource() == detailsBtn ){
+			int idNum  = Integer.parseInt(custIdNumber.getText());
+			
+			String cust = con.customerDetails(idNum);
+			custDetails.setText(cust);
+			
+		}
+		
 	}
 
 
