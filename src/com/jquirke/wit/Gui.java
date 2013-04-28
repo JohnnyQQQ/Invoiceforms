@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -45,14 +46,10 @@ public class Gui extends JFrame implements ActionListener{
 	private Border redline = BorderFactory.createLineBorder(color.button());
 	
 	private Border compound = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel );  
-	
-	private ImageIcon image = new ImageIcon("images/businessLogo.fw.png");
+	private ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("businessLogo.fw.png"));
+	Icon tabImg = new ImageIcon(getClass().getClassLoader().getResource("icon.fw.png"));
 	private JLabel logo = new JLabel("", image, JLabel.CENTER);
 	
-	
-	
-	
-
 
 	public Gui(){
 		
@@ -78,13 +75,14 @@ public class Gui extends JFrame implements ActionListener{
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.WRAP_TAB_LAYOUT);
 		tabbedPane.setUI(new BasicTabbedPaneUI());
 		
-		tabbedPane.insertTab("Options", new ImageIcon("images/icon.fw.png"), OptionsPanel(), "tooltip", 0);
-		tabbedPane.insertTab("Customer Details", new ImageIcon("images/icon.fw.png"), p1.getPanel1(), "tooltip", 1);
-		tabbedPane.insertTab("Create Invoice ", new ImageIcon("images/icon.fw.png"), p2.getPanel2(), "tooltip", 2);
-		tabbedPane.insertTab("Edit Customer Details", new ImageIcon("images/icon.fw.png"), p4.getPanel4(), "tooltip", 3);
-		tabbedPane.insertTab("Reports Page", new ImageIcon("images/icon.fw.png"), p5.getReportPagel(), "tooltip", 4);
+		tabbedPane.insertTab("Options", tabImg, OptionsPanel(), "tooltip", 0);
+		tabbedPane.insertTab("Customer Details", tabImg, p1.getPanel1(), "tooltip", 1);
+		tabbedPane.insertTab("Create Invoice ", tabImg, p2.getPanel2(), "tooltip", 2);
+		tabbedPane.insertTab("Edit Customer Details", tabImg, p4.getPanel4(), "tooltip", 3);
+		tabbedPane.insertTab("Reports Page", tabImg, p5.getReportPagel(), "tooltip", 4);
 		
-		
+	//	getClass().getResource("/images/icon.jpg") 
+	//	getClass().getClassLoader().getResource("images/icon.jpg")
 		
 		topPanel.setBorder(BorderFactory.createEmptyBorder(20, 5, 5, 5));
 		topPanel.add( tabbedPane, BorderLayout.CENTER );
@@ -113,25 +111,30 @@ public void createOptionsPanel()
 	
 	newInvoice.setBounds(240, 300, 300, 75);
 	newInvoice.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
+	newInvoice.setFont(new Font("Serif", Font.PLAIN,20));
 	newInvoice.addActionListener(this);
 	
 	
 	newCustomer.setBounds(30, 400, 300, 75);
 	newCustomer.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
+	newCustomer.setFont(new Font("Serif", Font.PLAIN,20));
 	newCustomer.addActionListener(this);
 	
 		
 	editInvoice.setBounds(425, 400, 300, 75);
 	editInvoice.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
+	editInvoice.setFont(new Font("Serif", Font.PLAIN,20));
 	editInvoice.addActionListener(this);
 	
 	
 	invReports.setBounds(30, 500, 300, 75);
 	invReports.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
+	invReports.setFont(new Font("Serif", Font.PLAIN,20));
 	invReports.addActionListener(this);
 	
 	editCustomer.setBounds(425, 500, 300, 75);
 	editCustomer.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
+	editCustomer.setFont(new Font("Serif", Font.PLAIN,20));
 	editCustomer.addActionListener(this);
 	
 	OptionsPanel.add(logo);

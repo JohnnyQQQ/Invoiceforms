@@ -43,8 +43,9 @@ public class InvoicePanel extends JPanel implements ActionListener{
 	private JTextField custId =new JTextField(10);
 	private JTextField number = new JTextField(80);	
 	private JTextField total = new JTextField();
+	
+	// TextArea
 	private JTextArea textArea = new JTextArea();
-		
 	private JTextArea invoiceArea = new JTextArea();
 	
 	//Buttons
@@ -86,7 +87,7 @@ public class InvoicePanel extends JPanel implements ActionListener{
 		top.add(custId());			
 		top.add(searchButton());
 		
-		/*
+		/* No Space now
 		JLabel invoiceTitle = new JLabel("Enter Invoice Details Here: ");
 		invoiceTitle.setForeground(Color.red);
 		invoiceTitle.setBounds( 10,10, 500, 40 );
@@ -97,11 +98,15 @@ public class InvoicePanel extends JPanel implements ActionListener{
 		center.setLayout(null);
 		center.setBackground(color.panelCol());
 		center.setPreferredSize(new Dimension(775, 730));	
+		
 		textArea.setBounds( 10, 25, 200,175);
+		
 		textArea.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 2, 16)), javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
 		
-		//String cust = con.setCustomer();
-		//textArea.setText(cust);
+		// Taken this code out, it shows the last customer in the database on the text Field
+		// maybe better if the button pressed does it instead
+		// String cust = con.setCustomer();
+		// textArea.setText(cust);
 		
 	  	confirm.setBounds(550, 400, 150,50);
 		confirm.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
@@ -159,6 +164,8 @@ public JTextField custId(){
 		center.add(combo);
 		
 		invoiceArea.setBounds(20,360, 500, 150);
+		invoiceArea.setFont(new Font("Verdana", Font.BOLD,16));
+		invoiceArea.setBorder(BorderFactory.createMatteBorder(1, 2, 1, 1, color.button()));
 		center.add(invoiceArea);
 		center.add(label.invoiceDetails());
 				
@@ -210,8 +217,11 @@ public void enterItems(){
 		
 
 	
-	total.setBounds(400,270, 150, 20 );
+ 	total.setBounds(400,270, 150, 20 );
+	total.setFont(new Font("Verdana", Font.BOLD,16));
 	total.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, color.button()));
+	
+	
 	total.setSize(140,30);	
 	center.add(total);
 	

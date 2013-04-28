@@ -95,7 +95,7 @@ public class Labels {
 
 	
 	public JLabel getTotalCost(){		
-		JLabel tc= new JLabel("TOTAL COST  ");
+		JLabel tc= new JLabel("TOTAL COST  €");
 		tc.setBounds( 400,250, 150, 20 );
 		tc.setFont(new Font("Verdana", Font.BOLD,14));
 		return tc;		

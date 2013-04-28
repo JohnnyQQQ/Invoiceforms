@@ -6,9 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -51,6 +53,7 @@ public class ReportsPage implements ActionListener {
 		
 		
 		detailsBtn.setBounds(130,80,300,30);
+		detailsBtn.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 		detailsBtn.addActionListener(this);
 		
 		custDetails.setBounds(10,130,400,200);
@@ -78,21 +81,20 @@ public class ReportsPage implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		try{
 		if (e.getSource() == detailsBtn ){
 			
 			int idNum  = Integer.parseInt(custIdNumber.getText());
-			
-			
 			custDetails.append(con.customerDetails(idNum ));
-			
-			
-			
 			
 		}
 		
+	}catch(Exception w){
+		 JOptionPane notice = new JOptionPane();
+		notice.showMessageDialog(null, "Please enter a Customer number",null, JOptionPane.WARNING_MESSAGE);
+		
 	}
 
-
+	}
 
 }

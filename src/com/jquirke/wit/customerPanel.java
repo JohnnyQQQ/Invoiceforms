@@ -67,27 +67,42 @@ public class customerPanel {
 		// First name
 		panel1.add(label.enterCustomer());
 		firstname.setBounds( 100, 100, 150, 20 );
+		firstname.setBorder(BorderFactory.createMatteBorder(1, 2, 1, 1, color.button()));
+		firstname.setFont(new Font("Verdana", Font.BOLD,14));
 		firstname.setSize(200,30);
 		panel1.add(firstname);
 		
 		// Second name				
 		panel1.add(label.lastName());
 		lfield.setBounds( 440, 100, 150, 20 );
+		lfield.setBorder(BorderFactory.createMatteBorder(1, 2, 1, 1, color.button()));
+		lfield.setFont(new Font("Verdana", Font.BOLD,14));
 		lfield.setSize(200,30);		
 		panel1.add(lfield);
 		
 		//Address
 		panel1.add(label.addr());
 		addrField.setBounds(100, 150, 150, 20 );
+		addrField.setBorder(BorderFactory.createMatteBorder(1, 2, 1, 1, color.button()));
+		addrField.setFont(new Font("Verdana", Font.BOLD,14));
 		addrField.setSize(200,30);	
 		addrField.getText();
+		
 		addrField2.setBounds( 100, 190, 150, 20 );
+		addrField2.setBorder(BorderFactory.createMatteBorder(1, 2, 1, 1, color.button()));
+		addrField2.setFont(new Font("Verdana", Font.BOLD,14));
 		addrField2.setSize(200,30);
 		addrField2.getText();
+		
 		addrField3.setBounds( 100, 230, 150, 20 );
+		addrField3.setBorder(BorderFactory.createMatteBorder(1, 2, 1, 1, color.button()));
+		addrField2.setFont(new Font("Verdana", Font.BOLD,14));
 		addrField3.setSize(200,30);
 		addrField3.getText();
+		
 		addrField4.setBounds( 100, 270, 150, 20 );
+		addrField4.setBorder(BorderFactory.createMatteBorder(1, 2, 1, 1, color.button()));
+		addrField2.setFont(new Font("Verdana", Font.BOLD,14));
 		addrField4.setSize(200,30);
 		addrField4.getText();
 		
@@ -100,6 +115,8 @@ public class customerPanel {
 		// Telephone numbers
 		panel1.add(label.getTelephone());	
 		telfield.setBounds(440, 200, 150, 20 );
+		telfield.setBorder(BorderFactory.createMatteBorder(1, 2, 1, 1, color.button()));
+		telfield.setFont(new Font("Verdana", Font.BOLD,14));
 		telfield.setSize(200,30);
 		telfield.getText();
 		panel1.add(telfield);
@@ -107,6 +124,8 @@ public class customerPanel {
 		// Mobile
 		panel1.add(label.getMobile());
 		mobTelfield.setBounds( 440, 250, 150, 20 );
+		mobTelfield.setBorder(BorderFactory.createMatteBorder(1, 2, 1, 1, color.button()));
+		mobTelfield.setFont(new Font("Verdana", Font.BOLD,14));
 		mobTelfield.setSize(200,30);
 		mobTelfield.getText();	
 		panel1.add(mobTelfield);	
@@ -114,11 +133,13 @@ public class customerPanel {
 		// Comments Box		
 		panel1.add(label.getComment());		
 		commentsfield.setBounds( 20, 340, 150, 20 );
+		commentsfield.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, color.button()));
+		commentsfield.setFont(new Font("Verdana", Font.BOLD,14));
 		commentsfield.setSize(400,50);
 		panel1.add(commentsfield);
 	    
 		
-		save.setBounds( 275, 650, 150, 20 );
+		save.setBounds( 275, 640, 150, 20 );
 		save.setBorder(BorderFactory.createMatteBorder(1, 8, 1, 1, color.button()));
 		save.setSize(200,50);
 		save.addActionListener(btnL);

@@ -479,7 +479,8 @@ public String customerDetails(int custNumber){
 		
 		
 	} catch (SQLException e) {
-		
+		 JOptionPane notice = new JOptionPane();
+			notice.showMessageDialog(null, "Please enter a Valid Customer number",null, JOptionPane.WARNING_MESSAGE);
 		e.printStackTrace();
 	}
 	
@@ -489,7 +490,20 @@ public String customerDetails(int custNumber){
 	
 }
 
-
+public void delInvoice(int delNumber){
+	
+	try{
+		connection();
+		statement.executeUpdate("Delete FROM invoice WHERE  invoice_id = " + delNumber);
+		System.out.print("Invoice is now Bye,Bye");
+		
+	}catch(Exception del){
+		System.out.print("Invoice does not exist");
+		
+		del.printStackTrace();
+		
+	}
+}
 
 }// end SQL Queries code
 
