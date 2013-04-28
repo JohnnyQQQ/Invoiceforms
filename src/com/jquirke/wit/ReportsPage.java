@@ -1,3 +1,9 @@
+//*******************************************
+// John Quirke
+// Invoice manager assignment
+// BSc IT 2012 -2013
+//***********************************************
+
 package com.jquirke.wit;
 
 import java.awt.Color;

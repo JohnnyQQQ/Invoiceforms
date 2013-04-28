@@ -1,3 +1,9 @@
+//*******************************************
+// John Quirke
+// Invoice manager assignment
+// BSc IT 2012 -2013
+//***********************************************
+
 package com.jquirke.wit;
 import java.awt.Color;
 import java.awt.Font;
@@ -86,6 +92,7 @@ public class EditInvoices implements ActionListener{
 		editInvoices.add(editCustNumber);
 		editInvoices.add(editBox);
 		editInvoices.add(custDetails);
+		
 		editCustomerDetails();
 		buttonCustomerEdit();
 		
